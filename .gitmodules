@@ -4,3 +4,9 @@
 [submodule "lib/pyth-crosschain"]
 	path = lib/pyth-crosschain
 	url = https://github.com/pyth-network/pyth-crosschain
+[submodule "lib/rain.math.fixedpoint"]
+	path = lib/rain.math.fixedpoint
+	url = https://github.com/rainlanguage/rain.math.fixedpoint
+[submodule "lib/rain.math.float"]
+	path = lib/rain.math.float
+	url = https://github.com/rainlanguage/rain.math.float

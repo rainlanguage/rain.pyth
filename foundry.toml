@@ -1,0 +1,8 @@
+[profile.default]
+
+solc = "0.8.25"
+
+remappings = [
+    "pyth-sdk/=lib/pyth-crosschain/target_chains/ethereum/sdk/solidity/",
+    "rain.math.float/=lib/rain.math.float/src/",
+]
