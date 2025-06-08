@@ -6,6 +6,10 @@ import {IPyth} from "pyth-sdk/IPyth.sol";
 import {PythStructs} from "pyth-sdk/PythStructs.sol";
 import {LibDecimalFloat} from "rain.math.float/lib/LibDecimalFloat.sol";
 
+error UnsupportedChainId();
+
+error UnsupportedFeedSymbol();
+
 /// Chain IDs from https://chainlist.org/
 /// Price feed contract addresses from https://docs.pyth.network/price-feeds/contract-addresses/evm
 library LibPyth {
@@ -52,7 +56,7 @@ library LibPyth {
         } else if (chainId == CHAIN_ID_BASE) {
             return PRICE_FEED_CONTRACT_BASE;
         } else {
-            revert("Unsupported chain ID");
+            revert UnsupportedChainId();
         }
     }
 
@@ -74,7 +78,7 @@ library LibPyth {
         } else if (feedSymbolHash == PRICE_FEED_SYMBOL_HASH_EQUITY_US_META_USD) {
             return PRICE_FEED_ID_EQUITY_US_META_USD;
         } else {
-            revert("Unsupported feed symbol");
+            revert UnsupportedFeedSymbol();
         }
     }
 
