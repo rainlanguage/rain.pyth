@@ -88,6 +88,6 @@ library LibPyth {
 
         PythStructs.Price memory priceData = priceFeedContract.getPriceNoOlderThan(feedId, staleAfter);
 
-        return LibDecimalFloat.toFixedDecimalLossless(priceData.price, -priceData.expo, 18);
+        return LibDecimalFloat.toFixedDecimalLossless(priceData.price, priceData.expo, 18);
     }
 }
