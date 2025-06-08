@@ -15,7 +15,21 @@ contract LibPythGetPriceNoOlderThanTest is Test {
     }
 
     function testPriceNoOlderThanArbitrum() external {
-        vm.createSelectFork("https://arbitrum.gateway.tenderly.co");
-        checkPriceNoOlderThan("Equity.US.GOOG/USD", 3600000, 172.3176e18);
+        vm.createSelectFork("https://arbitrum.gateway.tenderly.co", 345270769);
+        checkPriceNoOlderThan("Equity.US.GOOG/USD", 72 hours, 172.3176e18);
+        checkPriceNoOlderThan("Equity.US.AMZN/USD", 500 hours, 205.06198e18);
+        checkPriceNoOlderThan("Equity.US.AAPL/USD", 72 hours, 202.86002e18);
+        checkPriceNoOlderThan("Equity.US.MSFT/USD", 72 hours, 469.8035e18);
+        checkPriceNoOlderThan("Equity.US.TSLA/USD", 300 hours, 360.02978e18);
+        checkPriceNoOlderThan("Equity.US.NVDA/USD", 1000 hours, 104.5623e18);
+        checkPriceNoOlderThan("Equity.US.META/USD", 8000 hours, 448.73e18);
+        vm.createSelectFork("wss://base.gateway.tenderly.co", 31309429);
+        checkPriceNoOlderThan("Equity.US.GOOG/USD", 72 hours, 174.93179e18);
+        checkPriceNoOlderThan("Equity.US.AMZN/USD", 500 hours, 207.372e18);
+        checkPriceNoOlderThan("Equity.US.AAPL/USD", 72 hours, 205.12e18);
+        checkPriceNoOlderThan("Equity.US.MSFT/USD", 300 hours, 458.35309e18);
+        checkPriceNoOlderThan("Equity.US.TSLA/USD", 72 hours, 301.47341e18);
+        checkPriceNoOlderThan("Equity.US.NVDA/USD", 72 hours, 141.66994e18);
+        checkPriceNoOlderThan("Equity.US.META/USD", 72 hours, 693.349e18);
     }
 }
