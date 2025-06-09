@@ -10,4 +10,4 @@
 pragma solidity =0.8.25;
 
 /// @dev Hash of the known bytecode.
-bytes32 constant BYTECODE_HASH = bytes32(0x69ec4052706d4939ef109caad2cf1e89bf5d59edffe335ff5f19a0032e6ff23a);
+bytes32 constant BYTECODE_HASH = bytes32(0xa2046c1a0669b90280f894050cbcbed1062b465620ac28b956c66cbc28a42953);
