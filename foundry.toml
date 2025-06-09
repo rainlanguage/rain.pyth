@@ -8,3 +8,7 @@ remappings = [
     "rain.interpreter/=lib/rain.interpreter/src/",
     "rain.sol.codegen/=lib/rain.interpreter/lib/rain.interpreter.interface/lib/rain.sol.codegen/src/",
 ]
+
+fs_permissions = [
+    { access = "read-write", path = "src/generated" },
+]
