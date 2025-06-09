@@ -7,3 +7,6 @@
 [submodule "lib/rain.math.float"]
 	path = lib/rain.math.float
 	url = https://github.com/rainlanguage/rain.math.float
+[submodule "lib/rain.interpreter"]
+	path = lib/rain.interpreter
+	url = https://github.com/rainlanguage/rain.interpreter
