@@ -3,7 +3,7 @@
 pragma solidity =0.8.25;
 
 import {Test} from "forge-std/Test.sol";
-import {LibPyth, UnsupportedChainId} from "src/lib/LibPyth.sol";
+import {LibPyth, UnsupportedChainId} from "src/lib/pyth/LibPyth.sol";
 
 contract LibPythGetPriceFeedContractTest is Test {
     function getPriceFeedContractExternal(uint256 chainId) external pure returns (address) {

@@ -3,7 +3,7 @@
 pragma solidity =0.8.25;
 
 import {Test} from "forge-std/Test.sol";
-import {LibPyth, UnsupportedFeedSymbol} from "src/lib/LibPyth.sol";
+import {LibPyth, UnsupportedFeedSymbol} from "src/lib/pyth/LibPyth.sol";
 
 contract LibPythGetPriceFeedIdTest is Test {
     function getPriceFeedIdExternal(string memory symbol) external pure returns (bytes32) {

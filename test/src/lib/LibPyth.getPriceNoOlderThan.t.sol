@@ -3,7 +3,7 @@
 pragma solidity ^0.8.25;
 
 import {Test} from "forge-std/Test.sol";
-import {LibPyth} from "src/lib/LibPyth.sol";
+import {LibPyth} from "src/lib/pyth/LibPyth.sol";
 
 contract LibPythGetPriceNoOlderThanTest is Test {
     function getPriceNoOlderThanExternal(string memory symbol, uint256 maxAge) external view returns (uint256) {
