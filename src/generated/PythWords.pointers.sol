@@ -10,13 +10,50 @@
 pragma solidity =0.8.25;
 
 /// @dev Hash of the known bytecode.
-bytes32 constant BYTECODE_HASH = bytes32(0xbd7c8466dae15c7b4d75fbc0fcf48ef41b29d00e08b5658530c34b0a8303bcc1);
+bytes32 constant BYTECODE_HASH = bytes32(0xcbec9007109ea42efb61989d91d847de0484623e7766d974bc1f5efd3ae5da64);
+
+/// @dev The hash of the meta that describes the contract.
+bytes32 constant DESCRIBED_BY_META_HASH = bytes32(0x59a6ebb4b3b0730014b2424184427e3c39407d6f0ef38a9baf68f6bb395303d5);
+
+/// @dev The parse meta that is used to lookup word definitions.
+/// The structure of the parse meta is:
+/// - 1 byte: The depth of the bloom filters
+/// - 1 byte: The hashing seed
+/// - The bloom filters, each is 32 bytes long, one for each build depth.
+/// - All the items for each word, each is 4 bytes long. Each item's first byte
+///   is its opcode index, the remaining 3 bytes are the word fingerprint.
+/// To do a lookup, the word is hashed with the seed, then the first byte of the
+/// hash is compared against the bloom filter. If there is a hit then we count
+/// the number of 1 bits in the bloom filter up to this item's 1 bit. We then
+/// treat this a the index of the item in the items array. We then compare the
+/// word fingerprint against the fingerprint of the item at this index. If the
+/// fingerprints equal then we have a match, else we increment the seed and try
+/// again with the next bloom filter, offsetting all the indexes by the total
+/// bit count of the previous bloom filter. If we reach the end of the bloom
+/// filters then we have a miss.
+bytes constant PARSE_META = hex"0100000000000000000000000000000000000000000000004000000000000000000000b29071";
+
+/// @dev The build depth of the parser meta.
+
+uint8 constant PARSE_META_BUILD_DEPTH = 1;
+
+/// @dev The function pointers for the sub parser functions that produce the
+/// bytecode that this contract knows about. This is both constructing the subParser
+/// bytecode that dials back into this contract at eval time, and mapping
+/// to things that happen entirely on the interpreter such as well known
+/// constants and references to the context grid.
+bytes constant SUB_PARSER_WORD_PARSERS = hex"0726";
+
+/// @dev Every two bytes is a function pointer for an operand handler.
+/// These positional indexes all map to the same indexes looked up in the parse
+/// meta.
+bytes constant OPERAND_HANDLER_FUNCTION_POINTERS = hex"0864";
 
 /// @dev The function pointers for the integrity check fns.
-bytes constant INTEGRITY_FUNCTION_POINTERS = hex"0484";
+bytes constant INTEGRITY_FUNCTION_POINTERS = hex"0857";
 
 /// @dev The function pointers known to the interpreter for dynamic dispatch.
 /// By setting these as a constant they can be inlined into the interpreter
 /// and loaded at eval time for very low gas (~100) due to the compiler
 /// optimising it to a single `codecopy` to build the in memory bytes array.
-bytes constant OPCODE_FUNCTION_POINTERS = hex"0375";
+bytes constant OPCODE_FUNCTION_POINTERS = hex"07d9";

@@ -6,11 +6,13 @@ remappings = [
     "pyth-sdk/=lib/pyth-crosschain/target_chains/ethereum/sdk/solidity/",
     "rain.math.float/=lib/rain.math.float/src/",
     "rain.interpreter/=lib/rain.interpreter/src/",
+    "rain.metadata/=lib/rain.interpreter/lib/rain.metadata/src/",
     "rain.sol.codegen/=lib/rain.interpreter/lib/rain.interpreter.interface/lib/rain.sol.codegen/src/",
 ]
 
 fs_permissions = [
     { access = "read-write", path = "src/generated" },
+    { access = "read-write", path = "meta" },
 ]
 
 evm_version = "paris"

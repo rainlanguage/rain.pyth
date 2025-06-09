@@ -6,6 +6,9 @@ import {Script} from "forge-std/Script.sol";
 import {PythWords} from "src/concrete/PythWords.sol";
 import {LibFs} from "rain.sol.codegen/lib/LibFs.sol";
 import {LibCodeGen} from "rain.sol.codegen/lib/LibCodeGen.sol";
+import {LibGenParseMeta} from "rain.interpreter.interface/lib/codegen/LibGenParseMeta.sol";
+import {LibPythSubParser} from "src/lib/parse/LibPythSubParser.sol";
+import {PARSE_META_BUILD_DEPTH} from "src/abstract/PythSubParser.sol";
 
 contract BuildPointers is Script {
     function buildPythWordsPointers() internal {
@@ -18,6 +21,12 @@ contract BuildPointers is Script {
             address(pythWords),
             name,
             string.concat(
+                LibCodeGen.describedByMetaHashConstantString(vm, name),
+                LibGenParseMeta.parseMetaConstantString(
+                    vm, LibPythSubParser.authoringMetaV2(), PARSE_META_BUILD_DEPTH
+                ),
+                LibCodeGen.subParserWordParsersConstantString(vm, pythWords),
+                LibCodeGen.operandHandlerFunctionPointersConstantString(vm, pythWords),
                 LibCodeGen.integrityFunctionPointersConstantString(vm, pythWords),
                 LibCodeGen.opcodeFunctionPointersConstantString(vm, pythWords)
             )
