@@ -5,6 +5,7 @@ pragma solidity =0.8.25;
 import {Script} from "forge-std/Script.sol";
 import {PythWords} from "src/concrete/PythWords.sol";
 import {LibFs} from "rain.sol.codegen/lib/LibFs.sol";
+import {LibCodeGen} from "rain.sol.codegen/lib/LibCodeGen.sol";
 
 contract BuildPointers is Script {
     function buildPythWordsPointers() internal {
@@ -12,7 +13,15 @@ contract BuildPointers is Script {
 
         string memory name = "PythWords";
 
-        LibFs.buildFileForContract(vm, address(pythWords), name, "");
+        LibFs.buildFileForContract(
+            vm,
+            address(pythWords),
+            name,
+            string.concat(
+                LibCodeGen.integrityFunctionPointersConstantString(vm, pythWords),
+                LibCodeGen.opcodeFunctionPointersConstantString(vm, pythWords)
+            )
+        );
     }
 
     function run() external {

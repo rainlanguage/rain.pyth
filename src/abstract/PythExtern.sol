@@ -11,15 +11,15 @@ uint256 constant OPCODE_PYTH_PRICE = 0;
 uint256 constant OPCODE_FUNCTION_POINTERS_LENGTH = 1;
 
 abstract contract PythExtern is BaseRainterpreterExternNPE2 {
-    /// @inheritdoc BaseRainterpreterExternNPE2
-    function opcodeFunctionPointers() internal pure override returns (bytes memory) {
-        return "";
-    }
+    // /// @inheritdoc BaseRainterpreterExternNPE2
+    // function opcodeFunctionPointers() internal pure override returns (bytes memory) {
+    //     return "";
+    // }
 
-    /// @inheritdoc BaseRainterpreterExternNPE2
-    function integrityFunctionPointers() internal pure override returns (bytes memory) {
-        return "";
-    }
+    // /// @inheritdoc BaseRainterpreterExternNPE2
+    // function integrityFunctionPointers() internal pure override returns (bytes memory) {
+    //     return "";
+    // }
 
     function buildOpcodeFunctionPointers() external pure returns (bytes memory) {
         function(Operand, uint256[] memory)

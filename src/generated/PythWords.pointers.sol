@@ -10,4 +10,13 @@
 pragma solidity =0.8.25;
 
 /// @dev Hash of the known bytecode.
-bytes32 constant BYTECODE_HASH = bytes32(0xa2046c1a0669b90280f894050cbcbed1062b465620ac28b956c66cbc28a42953);
+bytes32 constant BYTECODE_HASH = bytes32(0xbd7c8466dae15c7b4d75fbc0fcf48ef41b29d00e08b5658530c34b0a8303bcc1);
+
+/// @dev The function pointers for the integrity check fns.
+bytes constant INTEGRITY_FUNCTION_POINTERS = hex"0484";
+
+/// @dev The function pointers known to the interpreter for dynamic dispatch.
+/// By setting these as a constant they can be inlined into the interpreter
+/// and loaded at eval time for very low gas (~100) due to the compiler
+/// optimising it to a single `codecopy` to build the in memory bytes array.
+bytes constant OPCODE_FUNCTION_POINTERS = hex"0375";
