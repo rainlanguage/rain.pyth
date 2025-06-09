@@ -22,9 +22,7 @@ contract BuildPointers is Script {
             name,
             string.concat(
                 LibCodeGen.describedByMetaHashConstantString(vm, name),
-                LibGenParseMeta.parseMetaConstantString(
-                    vm, LibPythSubParser.authoringMetaV2(), PARSE_META_BUILD_DEPTH
-                ),
+                LibGenParseMeta.parseMetaConstantString(vm, LibPythSubParser.authoringMetaV2(), PARSE_META_BUILD_DEPTH),
                 LibCodeGen.subParserWordParsersConstantString(vm, pythWords),
                 LibCodeGen.operandHandlerFunctionPointersConstantString(vm, pythWords),
                 LibCodeGen.integrityFunctionPointersConstantString(vm, pythWords),
