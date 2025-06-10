@@ -10,6 +10,6 @@ import {LibPythSubParser} from "src/lib/parse/LibPythSubParser.sol";
 /// wrapped in CBOR and emitted on metaboard.
 contract BuildAuthoringMeta is Script {
     function run() external {
-        vm.writeFileBinary("meta/PythWords.rain.meta", LibPythSubParser.authoringMetaV2());
+        vm.writeFileBinary("meta/PythFtsoSubParserAuthoringMeta.rain.meta", LibPythSubParser.authoringMetaV2());
     }
 }
