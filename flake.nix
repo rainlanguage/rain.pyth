@@ -27,7 +27,7 @@
                 -t cbor \
                 -e deflate \
                 -l none \
-                -o meta/PythFtsoWords.rain.meta \
+                -o meta/PythWords.rain.meta \
                 ;
             '';
           };
