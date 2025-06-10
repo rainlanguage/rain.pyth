@@ -25,7 +25,7 @@ library LibOpPythPrice {
             staleAfter := mload(add(inputs, 0x40))
         }
 
-        uint256 price18 = LibPyth.getPriceNoOlderThan(symbol.toString(), staleAfter);
+        uint256 price18 = LibPyth.getPriceNoOlderThan(symbol, staleAfter);
 
         uint256[] memory outputs;
         assembly ("memory-safe") {
