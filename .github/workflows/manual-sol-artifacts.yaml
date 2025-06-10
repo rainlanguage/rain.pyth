@@ -9,6 +9,8 @@ on:
         options:
           - songbird
           - flare
+          - arbitrum
+          - base
 
 jobs:
   deploy:
