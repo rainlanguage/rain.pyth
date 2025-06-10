@@ -18,6 +18,7 @@ import {
 uint8 constant PARSE_META_BUILD_DEPTH = 1;
 
 abstract contract PythSubParser is BaseRainterpreterSubParserNPE2 {
+    // slither-disable-next-line dead-code
     function extern() internal view virtual returns (address) {
         return address(this);
     }
@@ -72,11 +73,13 @@ abstract contract PythSubParser is BaseRainterpreterSubParserNPE2 {
         return LibConvert.unsafeTo16BitBytes(pointers);
     }
 
+    // slither-disable-next-line dead-code
     function pythPriceSubParser(uint256 constantsHeight, uint256 ioByte, Operand operand)
         internal
         view
         returns (bool, bytes memory, uint256[] memory)
     {
+        // slither-disable-next-line unused-return
         return LibSubParse.subParserExtern(
             IInterpreterExternV3(extern()), constantsHeight, ioByte, operand, OPCODE_PYTH_PRICE
         );
