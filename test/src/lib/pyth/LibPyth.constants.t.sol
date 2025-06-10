@@ -7,12 +7,12 @@ import {LibIntOrAString, IntOrAString} from "rain.intorastring/lib/LibIntOrAStri
 import {LibPyth} from "src/lib/pyth/LibPyth.sol";
 
 contract LibPythConstantsTest is Test {
-    function testChainIdConstants() external {
+    function testChainIdConstants() external pure {
         assertEq(LibPyth.CHAIN_ID_ARBITRUM, 42161);
         assertEq(LibPyth.CHAIN_ID_BASE, 8453);
     }
 
-    function testIntorastringConstants() external {
+    function testIntorastringConstants() external pure {
         assertEq(
             LibPyth.PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_GOOG_USD,
             IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.GOOG/USD"))
