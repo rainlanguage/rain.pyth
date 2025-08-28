@@ -56,6 +56,11 @@ library LibPyth {
         0x78a3e3b8e676a8f73c439f5d749737034b139bbbe899ba5775216fba596607fe;
     uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_META_USD =
         0x924571756974792e55532e4d4554412f55534400000000000000000000000000;
+    /// Gamestop
+    bytes32 constant PRICE_FEED_ID_EQUITY_US_GME_USD =
+        0x6f9cd89ef1b7fd39f667101a91ad578b6c6ace4579d5f7f285a4b06aa4504be6;
+    uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_GME_USD =
+        0x914571756974792e55532e474d452f5553440000000000000000000000000000;
 
     /// TODO replace with O(1) lookup table.
     function getPriceFeedContract(uint256 chainId) internal pure returns (IPyth) {
@@ -85,6 +90,8 @@ library LibPyth {
             return PRICE_FEED_ID_EQUITY_US_NVDA_USD;
         } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_META_USD) {
             return PRICE_FEED_ID_EQUITY_US_META_USD;
+        } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_GME_USD) {
+            return PRICE_FEED_ID_EQUITY_US_GME_USD;
         } else {
             revert UnsupportedFeedSymbol();
         }

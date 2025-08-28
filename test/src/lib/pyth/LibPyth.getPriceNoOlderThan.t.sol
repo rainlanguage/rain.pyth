@@ -27,6 +27,7 @@ contract LibPythGetPriceNoOlderThanTest is Test {
         checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.TSLA/USD"), 300 hours, 360.02978e18);
         checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.NVDA/USD"), 1000 hours, 104.5623e18);
         checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.META/USD"), 8000 hours, 448.73e18);
+        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.GME/USD"), 8000 hours, 29.3177e18);
         vm.createSelectFork(FORK_RPC_URL_BASE, FORK_BLOCK_BASE);
         checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.GOOG/USD"), 72 hours, 174.93179e18);
         checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.AMZN/USD"), 500 hours, 207.372e18);
@@ -35,5 +36,6 @@ contract LibPythGetPriceNoOlderThanTest is Test {
         checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.TSLA/USD"), 72 hours, 301.47341e18);
         checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.NVDA/USD"), 72 hours, 141.66994e18);
         checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.META/USD"), 72 hours, 693.349e18);
+        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.GME/USD"), 300 hours, 29.58047e18);
     }
 }

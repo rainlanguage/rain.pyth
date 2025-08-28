@@ -41,5 +41,9 @@ contract LibPythConstantsTest is Test {
             LibPyth.PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_META_USD,
             IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.META/USD"))
         );
+        assertEq(
+            LibPyth.PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_GME_USD,
+            IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.GME/USD"))
+        );
     }
 }
