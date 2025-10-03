@@ -43,6 +43,5 @@ contract LibPythGetPriceNoOlderThanTest is Test {
         checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.MSTR/USD"), 24 hours, 352.34642e18);
         checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.BRK-B/USD"), 24 hours, 496.12003e18);
         checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.SPLG/USD"), 24 hours, 78.71367e18);
-
     }
 }
