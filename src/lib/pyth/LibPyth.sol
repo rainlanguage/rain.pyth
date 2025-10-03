@@ -85,7 +85,7 @@ library LibPyth {
     // slither-disable-next-line too-many-digits
     uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_BRK_B_USD =
         0x934571756974792e55532e42524b2d422f555344000000000000000000000000;
-    /// SPLG
+    /// SPDR Portfolio S&P 500 ETF (SPLG)
     bytes32 constant PRICE_FEED_ID_EQUITY_US_SPLG_USD =
         0x4dfbf28d72ab41a878afcd4c6d5e9593dca7cf65a0da739cbad9b7414004f82d;
     // slither-disable-next-line too-many-digits
