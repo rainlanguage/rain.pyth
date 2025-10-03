@@ -69,7 +69,7 @@ library LibPyth {
     // slither-disable-next-line too-many-digits
     uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_GME_USD =
         0x914571756974792e55532e474d452f5553440000000000000000000000000000;
-    /// MSTR
+    /// MicroStrategy (MSTR)
     bytes32 constant PRICE_FEED_ID_EQUITY_US_MSTR_USD =
         0xe1e80251e5f5184f2195008382538e847fafc36f751896889dd3d1b1f6111f09;
     // slither-disable-next-line too-many-digits
