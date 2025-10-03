@@ -78,6 +78,7 @@ library LibPyth {
     /// Berkshire Hathaway Class B (BRK-B)
     bytes32 constant PRICE_FEED_ID_EQUITY_US_BRK_B_USD =
         0xe21c688b7fc65b4606a50f3635f466f6986db129bf16979875d160f9c508e8c7;
+    // slither-disable-next-line too-many-digits
     uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_BRK_B_USD =
         0x934571756974792e55532e42524b2d422f555344000000000000000000000000;
     /// SPDR Portfolio S&P 500 ETF (SPLG)
