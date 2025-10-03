@@ -45,6 +45,18 @@ contract LibPythGetPriceFeedIdTest is Test {
             LibPyth.PRICE_FEED_ID_EQUITY_US_GME_USD,
             LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.GME/USD"))
         );
+        assertEq(
+            LibPyth.PRICE_FEED_ID_EQUITY_US_MSTR_USD,
+            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.MSTR/USD"))
+        );
+        assertEq(
+            LibPyth.PRICE_FEED_ID_EQUITY_US_BRK_B_USD,
+            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.BRK-B/USD"))
+        );
+        assertEq(
+            LibPyth.PRICE_FEED_ID_EQUITY_US_SPLG_USD,
+            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.SPLG/USD"))
+        );
     }
 
     function testPriceFeedIdUnknownMappings(IntOrAString symbol) external {
@@ -57,6 +69,9 @@ contract LibPythGetPriceFeedIdTest is Test {
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.NVDA/USD"))
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.META/USD"))
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.GME/USD"))
+                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.MSTR/USD"))
+                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.BRK-B/USD"))
+                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.SPLG/USD"))
         );
         vm.expectRevert(UnsupportedFeedSymbol.selector);
         this.getPriceFeedIdExternal(symbol);
