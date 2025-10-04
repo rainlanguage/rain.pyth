@@ -4,11 +4,5 @@
   },
   "lib/pyth-crosschain": {
     "rev": "5e356f425d7e05d2d3bfd50b8780500bd560ed19"
-  },
-  "lib/rain.interpreter": {
-    "rev": "97927f4f613cdd4c165f493e5aeb216a6bd731e1"
-  },
-  "lib/rain.math.float": {
-    "rev": "b506dd29f7e698c597497b8b337d61f40c883efb"
   }
 }
