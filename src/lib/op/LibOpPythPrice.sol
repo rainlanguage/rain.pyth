@@ -19,13 +19,13 @@ library LibOpPythPrice {
     /// @param inputs the inputs to the extern.
     function run(Operand, uint256[] memory inputs) internal view returns (uint256[] memory) {
         IntOrAString symbol;
-        uint256 staleAfter;
+        Float staleAfter;
         assembly ("memory-safe") {
             symbol := mload(add(inputs, 0x20))
             staleAfter := mload(add(inputs, 0x40))
         }
 
-        uint256 price18 = LibPyth.getPriceNoOlderThan(symbol, staleAfter);
+        uint256 price18 = LibPyth.getPriceNoOlderThan(symbol, LibDecimalFloat.toFixedDecimalLossless(staleAfter, 0));
 
         uint256[] memory outputs;
         assembly ("memory-safe") {

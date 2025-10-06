@@ -3,10 +3,7 @@
     "rev": "17a9b2398a7d629931dc66a168a098d051d53dc6"
   },
   "lib/pyth-crosschain": {
-    "tag": {
-      "name": "v2.38.0",
-      "rev": "25ecd01bf7f5ce6e744f6a300b56dc2cdf7e65e6"
-    }
+    "rev": "6248709ef4f5c20e4fb2828bc68789eb0164df99"
   },
   "lib/rain.interpreter": {
     "rev": "e31cdda0815228cc66663104685b4f3509c15daf"
