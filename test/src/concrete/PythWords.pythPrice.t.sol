@@ -22,18 +22,18 @@ contract PythWordsPythPriceTest is OpTest {
         PythWords pythWords = new PythWords();
 
         StackItem[] memory expectedStack = new StackItem[](1);
-        expectedStack[0] = StackItem.wrap(Float.unwrap(LibDecimalFloat.fromFixedDecimalLosslessPacked(172.3176e18, 18)));
+        expectedStack[0] = StackItem.wrap(Float.unwrap(LibDecimalFloat.packLossless(172.3176e5, -5)));
 
         checkHappy(
             bytes(
                 string.concat(
                     "using-words-from ",
                     address(pythWords).toHexString(),
-                    " _: pyth-price(\"Equity.US.GOOG/USD\" 10800);"
+                    " _: pyth-price(\"Equity.US.GOOG/USD\" 1080000);"
                 )
             ),
             expectedStack,
-            "pyth-price(\"Equity.US.GOOG/USD\" 10800)"
+            "pyth-price(\"Equity.US.GOOG/USD\" 1080000)"
         );
     }
 }

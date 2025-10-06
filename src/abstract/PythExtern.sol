@@ -2,7 +2,11 @@
 // SPDX-FileCopyrightText: Copyright (c) 2020 Rain Open Source Software Ltd
 pragma solidity ^0.8.25;
 
-import {BaseRainterpreterExternNPE2, OperandV2} from "rain.interpreter/abstract/BaseRainterpreterExternNPE2.sol";
+import {
+    BaseRainterpreterExternNPE2,
+    OperandV2,
+    StackItem
+} from "rain.interpreter/abstract/BaseRainterpreterExternNPE2.sol";
 import {LibOpPythPrice} from "../lib/op/LibOpPythPrice.sol";
 import {LibConvert} from "rain.lib.typecast/LibConvert.sol";
 import {OPCODE_FUNCTION_POINTERS, INTEGRITY_FUNCTION_POINTERS} from "../generated/PythWords.pointers.sol";
@@ -21,13 +25,13 @@ abstract contract PythExtern is BaseRainterpreterExternNPE2 {
     }
 
     function buildOpcodeFunctionPointers() external pure returns (bytes memory) {
-        function(OperandV2, uint256[] memory)
+        function(OperandV2, StackItem[] memory)
             internal
             view
-            returns (uint256[] memory)[] memory fs = new function(OperandV2, uint256[] memory)
+            returns (StackItem[] memory)[] memory fs = new function(OperandV2, StackItem[] memory)
                 internal
                 view
-                returns (uint256[] memory)[](OPCODE_FUNCTION_POINTERS_LENGTH);
+                returns (StackItem[] memory)[](OPCODE_FUNCTION_POINTERS_LENGTH);
         fs[OPCODE_PYTH_PRICE] = LibOpPythPrice.run;
 
         uint256[] memory pointers;

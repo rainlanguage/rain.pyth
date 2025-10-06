@@ -2,7 +2,7 @@
 // SPDX-FileCopyrightText: Copyright (c) 2020 Rain Open Source Software Ltd
 pragma solidity ^0.8.25;
 
-import {OperandV2} from "rain.interpreter.interface/interface/unstable/IInterpreterV4.sol";
+import {OperandV2, StackItem} from "rain.interpreter.interface/interface/unstable/IInterpreterV4.sol";
 import {LibIntOrAString, IntOrAString} from "rain.intorastring/lib/LibIntOrAString.sol";
 import {LibPyth} from "../pyth/LibPyth.sol";
 import {Float, LibDecimalFloat} from "rain.math.float/lib/LibDecimalFloat.sol";
@@ -18,7 +18,7 @@ library LibOpPythPrice {
 
     /// Runs the Pyth price operation.
     /// @param inputs the inputs to the extern.
-    function run(OperandV2, uint256[] memory inputs) internal view returns (uint256[] memory) {
+    function run(OperandV2, StackItem[] memory inputs) internal view returns (StackItem[] memory) {
         IntOrAString symbol;
         Float staleAfter;
         assembly ("memory-safe") {
@@ -26,14 +26,14 @@ library LibOpPythPrice {
             staleAfter := mload(add(inputs, 0x40))
         }
 
-        uint256 price18 = LibPyth.getPriceNoOlderThan(symbol, LibDecimalFloat.toFixedDecimalLossless(staleAfter, 0));
+        Float price = LibPyth.getPriceNoOlderThan(symbol, staleAfter);
 
-        uint256[] memory outputs;
+        StackItem[] memory outputs;
         assembly ("memory-safe") {
             outputs := mload(0x40)
             mstore(0x40, add(outputs, 0x40))
             mstore(outputs, 1)
-            mstore(add(outputs, 0x20), price18)
+            mstore(add(outputs, 0x20), price)
         }
         return outputs;
     }

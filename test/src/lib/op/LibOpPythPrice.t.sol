@@ -3,9 +3,10 @@
 pragma solidity =0.8.25;
 
 import {Test} from "forge-std/Test.sol";
-import {LibOpPythPrice, OperandV2} from "src/lib/op/LibOpPythPrice.sol";
+import {LibOpPythPrice, OperandV2, StackItem} from "src/lib/op/LibOpPythPrice.sol";
 import {LibIntOrAString, IntOrAString} from "rain.intorastring/lib/LibIntOrAString.sol";
 import {FORK_RPC_URL_ARBITRUM, FORK_BLOCK_ARBITRUM} from "test/lib/LibFork.sol";
+import {Float, LibDecimalFloat} from "rain.math.float/lib/LibDecimalFloat.sol";
 
 contract LibOpPythPriceTest is Test {
     function testIntegrity(OperandV2 operand, uint256 inputs, uint256 outputs) external pure {
@@ -17,12 +18,12 @@ contract LibOpPythPriceTest is Test {
     function testRunForkCurrentPriceHappy() external {
         vm.createSelectFork(FORK_RPC_URL_ARBITRUM, FORK_BLOCK_ARBITRUM);
 
-        uint256[] memory inputs = new uint256[](2);
-        inputs[0] = IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.GOOG/USD"));
-        inputs[1] = 72 hours;
+        StackItem[] memory inputs = new StackItem[](2);
+        inputs[0] = StackItem.wrap(bytes32(IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.GOOG/USD"))));
+        inputs[1] = StackItem.wrap(Float.unwrap(LibDecimalFloat.packLossless(72 hours, 0)));
 
-        uint256[] memory outputs = LibOpPythPrice.run(OperandV2.wrap(0), inputs);
+        StackItem[] memory outputs = LibOpPythPrice.run(OperandV2.wrap(0), inputs);
         assertEq(outputs.length, 1);
-        assertEq(outputs[0], 172.3176e18);
+        assertEq(StackItem.unwrap(outputs[0]), Float.unwrap(LibDecimalFloat.packLossless(172.3176e5, -5)));
     }
 }

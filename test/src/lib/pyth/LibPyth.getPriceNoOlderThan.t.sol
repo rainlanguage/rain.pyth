@@ -2,46 +2,127 @@
 // SPDX-FileCopyrightText: Copyright (c) 2020 Rain Open Source Software Ltd
 pragma solidity ^0.8.25;
 
-import {Test} from "forge-std/Test.sol";
+import {Test, console2} from "forge-std/Test.sol";
 import {LibPyth} from "src/lib/pyth/LibPyth.sol";
 import {FORK_RPC_URL_ARBITRUM, FORK_RPC_URL_BASE, FORK_BLOCK_ARBITRUM, FORK_BLOCK_BASE} from "test/lib/LibFork.sol";
 import {IntOrAString, LibIntOrAString} from "rain.intorastring/lib/LibIntOrAString.sol";
+import {Float, LibDecimalFloat} from "rain.math.float/lib/LibDecimalFloat.sol";
 
 contract LibPythGetPriceNoOlderThanTest is Test {
     using LibIntOrAString for string;
 
-    function getPriceNoOlderThanExternal(IntOrAString symbol, uint256 maxAge) external view returns (uint256) {
+    function getPriceNoOlderThanExternal(IntOrAString symbol, Float maxAge) external view returns (Float) {
         return LibPyth.getPriceNoOlderThan(symbol, maxAge);
     }
 
-    function checkPriceNoOlderThan(IntOrAString symbol, uint256 maxAge, uint256 expectedPrice) internal view {
-        assertEq(LibPyth.getPriceNoOlderThan(symbol, maxAge), expectedPrice);
+    function checkPriceNoOlderThan(IntOrAString symbol, Float maxAge, Float expectedPrice) internal view {
+        Float actualPrice = this.getPriceNoOlderThanExternal(symbol, maxAge);
+        (int256 actualSignedCoefficient, int256 actualExponent) = LibDecimalFloat.unpack(actualPrice);
+        console2.logInt(actualSignedCoefficient);
+        console2.logInt(actualExponent);
+        assertEq(Float.unwrap(LibPyth.getPriceNoOlderThan(symbol, maxAge)), Float.unwrap(expectedPrice));
     }
 
     function testPriceNoOlderThanArbitrum() external {
         vm.createSelectFork(FORK_RPC_URL_ARBITRUM, FORK_BLOCK_ARBITRUM);
-        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.GOOG/USD"), 72 hours, 172.3176e18);
-        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.AMZN/USD"), 500 hours, 205.06198e18);
-        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.AAPL/USD"), 72 hours, 202.86002e18);
-        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.MSFT/USD"), 72 hours, 469.8035e18);
-        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.TSLA/USD"), 300 hours, 360.02978e18);
-        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.NVDA/USD"), 1000 hours, 104.5623e18);
-        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.META/USD"), 8000 hours, 448.73e18);
-        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.GME/USD"), 8000 hours, 29.3177e18);
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Equity.US.GOOG/USD"),
+            LibDecimalFloat.packLossless(72 hours, 0),
+            LibDecimalFloat.packLossless(172.3176e5, -5)
+        );
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Equity.US.AMZN/USD"),
+            LibDecimalFloat.packLossless(500 hours, 0),
+            LibDecimalFloat.packLossless(205.06198e5, -5)
+        );
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Equity.US.AAPL/USD"),
+            LibDecimalFloat.packLossless(72 hours, 0),
+            LibDecimalFloat.packLossless(202.86002e5, -5)
+        );
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Equity.US.MSFT/USD"),
+            LibDecimalFloat.packLossless(72 hours, 0),
+            LibDecimalFloat.packLossless(469.8035e5, -5)
+        );
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Equity.US.TSLA/USD"),
+            LibDecimalFloat.packLossless(300 hours, 0),
+            LibDecimalFloat.packLossless(360.02978e5, -5)
+        );
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Equity.US.NVDA/USD"),
+            LibDecimalFloat.packLossless(1000 hours, 0),
+            LibDecimalFloat.packLossless(104.5623e5, -5)
+        );
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Equity.US.META/USD"),
+            LibDecimalFloat.packLossless(8000 hours, 0),
+            LibDecimalFloat.packLossless(448.73e5, -5)
+        );
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Equity.US.GME/USD"),
+            LibDecimalFloat.packLossless(8000 hours, 0),
+            LibDecimalFloat.packLossless(29.3177e5, -5)
+        );
     }
 
     function testPriceNoOlderThanBase() external {
         vm.createSelectFork(FORK_RPC_URL_BASE, FORK_BLOCK_BASE);
-        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.GOOG/USD"), 24 hours, 246.29352e18);
-        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.AMZN/USD"), 24 hours, 222.43512e18);
-        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.AAPL/USD"), 24 hours, 257.33026e18);
-        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.MSFT/USD"), 24 hours, 515.64431e18);
-        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.TSLA/USD"), 24 hours, 436.03414e18);
-        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.NVDA/USD"), 24 hours, 188.92e18);
-        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.META/USD"), 24 hours, 727.0145e18);
-        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.GME/USD"), 24 hours, 27.24202e18);
-        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.MSTR/USD"), 24 hours, 352.34642e18);
-        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.BRK-B/USD"), 24 hours, 496.12003e18);
-        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.SPLG/USD"), 24 hours, 78.71367e18);
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Equity.US.GOOG/USD"),
+            LibDecimalFloat.packLossless(24 hours, 0),
+            LibDecimalFloat.packLossless(246.29352e5, -5)
+        );
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Equity.US.AMZN/USD"),
+            LibDecimalFloat.packLossless(24 hours, 0),
+            LibDecimalFloat.packLossless(222.43512e5, -5)
+        );
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Equity.US.AAPL/USD"),
+            LibDecimalFloat.packLossless(24 hours, 0),
+            LibDecimalFloat.packLossless(257.33026e5, -5)
+        );
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Equity.US.MSFT/USD"),
+            LibDecimalFloat.packLossless(24 hours, 0),
+            LibDecimalFloat.packLossless(515.64431e5, -5)
+        );
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Equity.US.TSLA/USD"),
+            LibDecimalFloat.packLossless(24 hours, 0),
+            LibDecimalFloat.packLossless(436.03414e5, -5)
+        );
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Equity.US.NVDA/USD"),
+            LibDecimalFloat.packLossless(24 hours, 0),
+            LibDecimalFloat.packLossless(188.92e5, -5)
+        );
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Equity.US.META/USD"),
+            LibDecimalFloat.packLossless(24 hours, 0),
+            LibDecimalFloat.packLossless(727.0145e5, -5)
+        );
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Equity.US.GME/USD"),
+            LibDecimalFloat.packLossless(24 hours, 0),
+            LibDecimalFloat.packLossless(27.24202e5, -5)
+        );
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Equity.US.MSTR/USD"),
+            LibDecimalFloat.packLossless(24 hours, 0),
+            LibDecimalFloat.packLossless(352.34642e5, -5)
+        );
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Equity.US.BRK-B/USD"),
+            LibDecimalFloat.packLossless(24 hours, 0),
+            LibDecimalFloat.packLossless(496.12003e5, -5)
+        );
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Equity.US.SPLG/USD"),
+            LibDecimalFloat.packLossless(24 hours, 0),
+            LibDecimalFloat.packLossless(78.71367e5, -5)
+        );
     }
 }
