@@ -3,9 +3,12 @@
     "rev": "17a9b2398a7d629931dc66a168a098d051d53dc6"
   },
   "lib/pyth-crosschain": {
-    "rev": "5e356f425d7e05d2d3bfd50b8780500bd560ed19"
+    "tag": {
+      "name": "v2.38.0",
+      "rev": "25ecd01bf7f5ce6e744f6a300b56dc2cdf7e65e6"
+    }
   },
   "lib/rain.interpreter": {
-    "rev": "821f42ad028126e56f701d5fb18b0b3d039a9909"
+    "rev": "e31cdda0815228cc66663104685b4f3509c15daf"
   }
 }
