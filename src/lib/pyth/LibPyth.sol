@@ -134,6 +134,8 @@ library LibPyth {
         bytes32 feedId = getPriceFeedId(feedSymbol);
         IPyth priceFeedContract = getPriceFeedContract(block.chainid);
 
+        // Slither false positive because conf is returned for caller to handle.
+        // slither-disable-next-line pyth-unchecked-confidence
         PythStructs.Price memory priceData = priceFeedContract.getPriceNoOlderThan(feedId, staleAfterUint);
 
         return (
