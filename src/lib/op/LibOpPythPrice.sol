@@ -5,15 +5,15 @@ pragma solidity ^0.8.25;
 import {OperandV2, StackItem} from "rain.interpreter.interface/interface/unstable/IInterpreterV4.sol";
 import {LibIntOrAString, IntOrAString} from "rain.intorastring/lib/LibIntOrAString.sol";
 import {LibPyth} from "../pyth/LibPyth.sol";
-import {Float, LibDecimalFloat} from "rain.math.float/lib/LibDecimalFloat.sol";
+import {Float} from "rain.math.float/lib/LibDecimalFloat.sol";
 
 library LibOpPythPrice {
     using LibIntOrAString for IntOrAString;
 
     /// Extern integrity for the Pyth price operation.
-    /// Always requires 2 inputs and produces 1 output.
+    /// Always requires 2 inputs and produces 2 outputs.
     function integrity(OperandV2, uint256, uint256) internal pure returns (uint256, uint256) {
-        return (2, 1);
+        return (2, 2);
     }
 
     /// Runs the Pyth price operation.
@@ -26,14 +26,15 @@ library LibOpPythPrice {
             staleAfter := mload(add(inputs, 0x40))
         }
 
-        Float price = LibPyth.getPriceNoOlderThan(symbol, staleAfter);
+        (Float price, Float conf) = LibPyth.getPriceNoOlderThan(symbol, staleAfter);
 
         StackItem[] memory outputs;
         assembly ("memory-safe") {
             outputs := mload(0x40)
-            mstore(0x40, add(outputs, 0x40))
-            mstore(outputs, 1)
+            mstore(0x40, add(outputs, 0x60))
+            mstore(outputs, 2)
             mstore(add(outputs, 0x20), price)
+            mstore(add(outputs, 0x40), conf)
         }
         return outputs;
     }

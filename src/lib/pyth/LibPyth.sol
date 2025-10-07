@@ -129,13 +129,16 @@ library LibPyth {
         }
     }
 
-    function getPriceNoOlderThan(IntOrAString feedSymbol, Float staleAfter) internal view returns (Float) {
+    function getPriceNoOlderThan(IntOrAString feedSymbol, Float staleAfter) internal view returns (Float, Float) {
         uint256 staleAfterUint = LibDecimalFloat.toFixedDecimalLossless(staleAfter, 0);
         bytes32 feedId = getPriceFeedId(feedSymbol);
         IPyth priceFeedContract = getPriceFeedContract(block.chainid);
 
         PythStructs.Price memory priceData = priceFeedContract.getPriceNoOlderThan(feedId, staleAfterUint);
 
-        return LibDecimalFloat.packLossless(priceData.price, priceData.expo);
+        return (
+            LibDecimalFloat.packLossless(priceData.price, priceData.expo),
+            LibDecimalFloat.packLossless(int256(uint256(priceData.conf)), priceData.expo)
+        );
     }
 }

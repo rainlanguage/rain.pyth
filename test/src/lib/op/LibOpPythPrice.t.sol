@@ -12,7 +12,7 @@ contract LibOpPythPriceTest is Test {
     function testIntegrity(OperandV2 operand, uint256 inputs, uint256 outputs) external pure {
         (uint256 calculatedInputs, uint256 calculatedOutputs) = LibOpPythPrice.integrity(operand, inputs, outputs);
         assertEq(calculatedInputs, 2);
-        assertEq(calculatedOutputs, 1);
+        assertEq(calculatedOutputs, 2);
     }
 
     function testRunForkCurrentPriceHappy() external {
@@ -23,7 +23,8 @@ contract LibOpPythPriceTest is Test {
         inputs[1] = StackItem.wrap(Float.unwrap(LibDecimalFloat.packLossless(72 hours, 0)));
 
         StackItem[] memory outputs = LibOpPythPrice.run(OperandV2.wrap(0), inputs);
-        assertEq(outputs.length, 1);
+        assertEq(outputs.length, 2);
         assertEq(StackItem.unwrap(outputs[0]), Float.unwrap(LibDecimalFloat.packLossless(172.3176e5, -5)));
+        assertEq(StackItem.unwrap(outputs[1]), Float.unwrap(LibDecimalFloat.packLossless(2.00302e5, -5)));
     }
 }
