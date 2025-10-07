@@ -4,7 +4,7 @@ pragma solidity ^0.8.25;
 
 import {IPyth} from "pyth-sdk/IPyth.sol";
 import {PythStructs} from "pyth-sdk/PythStructs.sol";
-import {LibDecimalFloat} from "rain.math.float/lib/LibDecimalFloat.sol";
+import {LibDecimalFloat, Float} from "rain.math.float/lib/LibDecimalFloat.sol";
 import {IntOrAString} from "rain.intorastring/lib/LibIntOrAString.sol";
 
 error UnsupportedChainId();
@@ -129,12 +129,18 @@ library LibPyth {
         }
     }
 
-    function getPriceNoOlderThan(IntOrAString feedSymbol, uint256 staleAfter) internal view returns (uint256) {
+    function getPriceNoOlderThan(IntOrAString feedSymbol, Float staleAfter) internal view returns (Float, Float) {
+        uint256 staleAfterUint = LibDecimalFloat.toFixedDecimalLossless(staleAfter, 0);
         bytes32 feedId = getPriceFeedId(feedSymbol);
         IPyth priceFeedContract = getPriceFeedContract(block.chainid);
 
-        PythStructs.Price memory priceData = priceFeedContract.getPriceNoOlderThan(feedId, staleAfter);
+        // Slither false positive because conf is returned for caller to handle.
+        // slither-disable-next-line pyth-unchecked-confidence
+        PythStructs.Price memory priceData = priceFeedContract.getPriceNoOlderThan(feedId, staleAfterUint);
 
-        return LibDecimalFloat.toFixedDecimalLossless(priceData.price, priceData.expo, 18);
+        return (
+            LibDecimalFloat.packLossless(priceData.price, priceData.expo),
+            LibDecimalFloat.packLossless(int256(uint256(priceData.conf)), priceData.expo)
+        );
     }
 }

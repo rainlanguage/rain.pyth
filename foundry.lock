@@ -1,0 +1,11 @@
+{
+  "lib/forge-std": {
+    "rev": "17a9b2398a7d629931dc66a168a098d051d53dc6"
+  },
+  "lib/pyth-crosschain": {
+    "rev": "6248709ef4f5c20e4fb2828bc68789eb0164df99"
+  },
+  "lib/rain.interpreter": {
+    "rev": "6068857887731d910f3f1850c5f27248fce3a5d5"
+  }
+}
