@@ -32,16 +32,17 @@ contract LibPythGetPriceNoOlderThanTest is Test {
 
     function testPriceNoOlderThanBase() external {
         vm.createSelectFork(FORK_RPC_URL_BASE, FORK_BLOCK_BASE);
-        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.GOOG/USD"), 24 hours, 246.29352e18);
-        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.AMZN/USD"), 24 hours, 222.43512e18);
-        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.AAPL/USD"), 24 hours, 257.33026e18);
-        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.MSFT/USD"), 24 hours, 515.64431e18);
-        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.TSLA/USD"), 24 hours, 436.03414e18);
-        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.NVDA/USD"), 24 hours, 188.92e18);
-        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.META/USD"), 24 hours, 727.0145e18);
-        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.GME/USD"), 24 hours, 27.24202e18);
-        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.MSTR/USD"), 24 hours, 352.34642e18);
-        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.BRK-B/USD"), 24 hours, 496.12003e18);
-        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.SPLG/USD"), 24 hours, 78.71367e18);
+        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.GOOG/USD"), 24 hours, 247.06287e18);
+        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.AMZN/USD"), 24 hours, 221.7625e18);
+        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.AAPL/USD"), 24 hours, 256.45015e18);
+        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.MSFT/USD"), 24 hours, 523.76501e18);
+        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.TSLA/USD"), 24 hours, 433.05e18);
+        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.NVDA/USD"), 24 hours, 185.08e18);
+        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.META/USD"), 24 hours, 712.915e18);
+        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.GME/USD"), 24 hours, 24.325e18);
+        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.MSTR/USD"), 24 hours, 328.41e18);
+        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.BRK-B/USD"), 24 hours, 502.26748e18);
+        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.SPLG/USD"), 24 hours, 78.70048e18);
+        checkPriceNoOlderThan(LibIntOrAString.fromString2("Equity.US.IAU/USD"), 24 hours, 74.99713e18);
     }
 }
