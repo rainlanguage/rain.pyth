@@ -87,6 +87,12 @@ library LibPyth {
     // slither-disable-next-line too-many-digits
     uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_SPLG_USD =
         0x924571756974792e55532e53504c472f55534400000000000000000000000000;
+    /// iShares Gold Trust (IAU)
+    bytes32 constant PRICE_FEED_ID_EQUITY_US_IAU_USD =
+        0xf703fbded84f7da4bd9ff4661b5d1ffefa8a9c90b7fa12f247edc8251efac914;
+    // slither-disable-next-line too-many-digits
+    uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_IAU_USD =
+        0x914571756974792e55532e4941552f5553440000000000000000000000000000;
 
     /// TODO replace with O(1) lookup table.
     function getPriceFeedContract(uint256 chainId) internal pure returns (IPyth) {
@@ -124,6 +130,8 @@ library LibPyth {
             return PRICE_FEED_ID_EQUITY_US_BRK_B_USD;
         } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_SPLG_USD) {
             return PRICE_FEED_ID_EQUITY_US_SPLG_USD;
+        } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_IAU_USD) {
+            return PRICE_FEED_ID_EQUITY_US_IAU_USD;
         } else {
             revert UnsupportedFeedSymbol();
         }

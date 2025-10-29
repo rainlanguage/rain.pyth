@@ -150,5 +150,12 @@ contract LibPythGetPriceNoOlderThanTest is Test {
             LibDecimalFloat.packLossless(78.71367e5, -5),
             LibDecimalFloat.packLossless(0.03281e5, -5)
         );
+
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Equity.US.IAU/USD"),
+            LibDecimalFloat.packLossless(24 hours, 0),
+            LibDecimalFloat.packLossless(71.99028e5, -5),
+            LibDecimalFloat.packLossless(0.07147e5, -5)
+        );
     }
 }
