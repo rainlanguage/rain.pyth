@@ -17,7 +17,15 @@ contract LibPythGetPriceFeedIdTest is Test {
             LibPyth.PRICE_FEED_ID_CRYPTO_BTC_USD, LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Crypto.BTC/USD"))
         );
         assertEq(
+            LibPyth.PRICE_FEED_ID_CRYPTO_WBTC_USD,
+            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Crypto.WBTC/USD"))
+        );
+        assertEq(
             LibPyth.PRICE_FEED_ID_CRYPTO_ETH_USD, LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Crypto.ETH/USD"))
+        );
+        assertEq(
+            LibPyth.PRICE_FEED_ID_CRYPTO_WETH_USD,
+            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Crypto.WETH/USD"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_CRYPTO_XRP_USD, LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Crypto.XRP/USD"))
@@ -70,7 +78,12 @@ contract LibPythGetPriceFeedIdTest is Test {
 
     function testPriceFeedIdUnknownMappings(IntOrAString symbol) external {
         vm.assume(
-            IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.GOOG/USD"))
+            IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.BTC/USD"))
+                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.WBTC/USD"))
+                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.ETH/USD"))
+                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.WETH/USD"))
+                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.XRP/USD"))
+                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.GOOG/USD"))
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.AMZN/USD"))
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.AAPL/USD"))
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.MSFT/USD"))
