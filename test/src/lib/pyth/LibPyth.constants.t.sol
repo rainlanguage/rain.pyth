@@ -14,6 +14,18 @@ contract LibPythConstantsTest is Test {
 
     function testIntorastringConstants() external pure {
         assertEq(
+            LibPyth.PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_BTC_USD,
+            IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.BTC/USD"))
+        );
+        assertEq(
+            LibPyth.PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_ETH_USD,
+            IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.ETH/USD"))
+        );
+        assertEq(
+            LibPyth.PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_XRP_USD,
+            IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.XRP/USD"))
+        );
+        assertEq(
             LibPyth.PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_GOOG_USD,
             IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.GOOG/USD"))
         );

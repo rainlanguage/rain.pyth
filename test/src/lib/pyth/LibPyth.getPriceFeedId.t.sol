@@ -14,6 +14,15 @@ contract LibPythGetPriceFeedIdTest is Test {
     function testPriceFeedIdKnownMappings() external pure {
         // Test known price feed IDs.
         assertEq(
+            LibPyth.PRICE_FEED_ID_CRYPTO_BTC_USD, LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Crypto.BTC/USD"))
+        );
+        assertEq(
+            LibPyth.PRICE_FEED_ID_CRYPTO_ETH_USD, LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Crypto.ETH/USD"))
+        );
+        assertEq(
+            LibPyth.PRICE_FEED_ID_CRYPTO_XRP_USD, LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Crypto.XRP/USD"))
+        );
+        assertEq(
             LibPyth.PRICE_FEED_ID_EQUITY_US_GOOG_USD,
             LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.GOOG/USD"))
         );
