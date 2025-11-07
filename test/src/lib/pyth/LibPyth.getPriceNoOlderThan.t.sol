@@ -33,6 +33,36 @@ contract LibPythGetPriceNoOlderThanTest is Test {
     function testPriceNoOlderThanArbitrum() external {
         vm.createSelectFork(FORK_RPC_URL_ARBITRUM, FORK_BLOCK_ARBITRUM);
         checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Crypto.BTC/USD"),
+            LibDecimalFloat.packLossless(30 minutes, 0),
+            LibDecimalFloat.packLossless(106345.97372127e8, -8),
+            LibDecimalFloat.packLossless(42.72120769e8, -8)
+        );
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Crypto.WBTC/USD"),
+            LibDecimalFloat.packLossless(30 minutes, 0),
+            LibDecimalFloat.packLossless(106193.79417862e8, -8),
+            LibDecimalFloat.packLossless(110.04339091e8, -8)
+        );
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Crypto.ETH/USD"),
+            LibDecimalFloat.packLossless(30 minutes, 0),
+            LibDecimalFloat.packLossless(2526.40213905e8, -8),
+            LibDecimalFloat.packLossless(1.33646932e8, -8)
+        );
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Crypto.WETH/USD"),
+            LibDecimalFloat.packLossless(60 days, 0),
+            LibDecimalFloat.packLossless(1760.95597004e8, -8),
+            LibDecimalFloat.packLossless(7.6662261e8, -8)
+        );
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Crypto.XRP/USD"),
+            LibDecimalFloat.packLossless(2 hours, 0),
+            LibDecimalFloat.packLossless(2.28242476e8, -8),
+            LibDecimalFloat.packLossless(0.0012824e8, -8)
+        );
+        checkPriceNoOlderThan(
             LibIntOrAString.fromString2("Equity.US.GOOG/USD"),
             LibDecimalFloat.packLossless(72 hours, 0),
             LibDecimalFloat.packLossless(172.3176e5, -5),

@@ -20,6 +20,33 @@ library LibPyth {
     IPyth constant PRICE_FEED_CONTRACT_ARBITRUM = IPyth(0xff1a0f4744e8582DF1aE09D5611b887B6a12925C);
     IPyth constant PRICE_FEED_CONTRACT_BASE = IPyth(0x8250f4aF4B972684F7b336503E2D6dFeDeB1487a);
 
+    /// Crypto feeds.
+    /// BTC/USD
+    bytes32 constant PRICE_FEED_ID_CRYPTO_BTC_USD = 0xe62df6c8b4a85fe1a67db44dc12de5db330f7ac66b72dc658afedf0f4a415b43;
+    // slither-disable-next-line too-many-digits
+    uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_BTC_USD =
+        uint256(0x8e43727970746f2e4254432f5553440000000000000000000000000000000000);
+    /// WBTC/USD
+    bytes32 constant PRICE_FEED_ID_CRYPTO_WBTC_USD = 0xc9d8b075a5c69303365ae23633d4e085199bf5c520a3b90fed1322a0342ffc33;
+    // slither-disable-next-line too-many-digits
+    uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_WBTC_USD =
+        uint256(0x8F43727970746F2E574254432F55534400000000000000000000000000000000);
+    /// ETH/USD
+    bytes32 constant PRICE_FEED_ID_CRYPTO_ETH_USD = 0xff61491a931112ddf1bd8147cd1b641375f79f5825126d665480874634fd0ace;
+    // slither-disable-next-line too-many-digits
+    uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_ETH_USD =
+        uint256(0x8e43727970746f2e4554482f5553440000000000000000000000000000000000);
+    /// WETH/USD
+    bytes32 constant PRICE_FEED_ID_CRYPTO_WETH_USD = 0x9d4294bbcd1174d6f2003ec365831e64cc31d9f6f15a2b85399db8d5000960f6;
+    // slither-disable-next-line too-many-digits
+    uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_WETH_USD =
+        uint256(0x8F43727970746F2E574554482F55534400000000000000000000000000000000);
+    /// XRP/USD
+    bytes32 constant PRICE_FEED_ID_CRYPTO_XRP_USD = 0xec5d399846a9209f3fe5881d70aae9268c94339ff9817e8d18ff19fa05eea1c8;
+    // slither-disable-next-line too-many-digits
+    uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_XRP_USD =
+        uint256(0x8e43727970746f2e5852502f5553440000000000000000000000000000000000);
+
     /// Magnificent 7 share price feed IDs.
     /// Google.
     bytes32 constant PRICE_FEED_ID_EQUITY_US_GOOG_USD =
@@ -102,7 +129,17 @@ library LibPyth {
     /// TODO replace with O(1) lookup table.
     function getPriceFeedId(IntOrAString feedSymbolIntOrAString) internal pure returns (bytes32) {
         uint256 feedSymbol = IntOrAString.unwrap(feedSymbolIntOrAString);
-        if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_GOOG_USD) {
+        if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_BTC_USD) {
+            return PRICE_FEED_ID_CRYPTO_BTC_USD;
+        } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_WBTC_USD) {
+            return PRICE_FEED_ID_CRYPTO_WBTC_USD;
+        } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_ETH_USD) {
+            return PRICE_FEED_ID_CRYPTO_ETH_USD;
+        } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_WETH_USD) {
+            return PRICE_FEED_ID_CRYPTO_WETH_USD;
+        } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_XRP_USD) {
+            return PRICE_FEED_ID_CRYPTO_XRP_USD;
+        } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_GOOG_USD) {
             return PRICE_FEED_ID_EQUITY_US_GOOG_USD;
         } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_AMZN_USD) {
             return PRICE_FEED_ID_EQUITY_US_AMZN_USD;
