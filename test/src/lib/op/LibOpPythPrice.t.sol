@@ -20,11 +20,11 @@ contract LibOpPythPriceTest is Test {
 
         StackItem[] memory inputs = new StackItem[](2);
         inputs[0] = StackItem.wrap(bytes32(IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.GOOG/USD"))));
-        inputs[1] = StackItem.wrap(Float.unwrap(LibDecimalFloat.packLossless(72 hours, 0)));
+        inputs[1] = StackItem.wrap(Float.unwrap(LibDecimalFloat.packLossless(100 days, 0)));
 
         StackItem[] memory outputs = LibOpPythPrice.run(OperandV2.wrap(0), inputs);
         assertEq(outputs.length, 2);
-        assertEq(StackItem.unwrap(outputs[0]), Float.unwrap(LibDecimalFloat.packLossless(172.3176e5, -5)));
-        assertEq(StackItem.unwrap(outputs[1]), Float.unwrap(LibDecimalFloat.packLossless(2.00302e5, -5)));
+        assertEq(StackItem.unwrap(outputs[0]), Float.unwrap(LibDecimalFloat.packLossless(252.91299e5, -5)));
+        assertEq(StackItem.unwrap(outputs[1]), Float.unwrap(LibDecimalFloat.packLossless(0.17951e5, -5)));
     }
 }

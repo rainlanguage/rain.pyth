@@ -22,21 +22,21 @@ contract PythWordsPythPriceTest is OpTest {
         PythWords pythWords = new PythWords();
 
         StackItem[] memory expectedStack = new StackItem[](2);
-        expectedStack[0] = StackItem.wrap(Float.unwrap(LibDecimalFloat.packLossless(2.00302e5, -5)));
-        expectedStack[1] = StackItem.wrap(Float.unwrap(LibDecimalFloat.packLossless(172.3176e5, -5)));
+        expectedStack[0] = StackItem.wrap(Float.unwrap(LibDecimalFloat.packLossless(0.17951e5, -5)));
+        expectedStack[1] = StackItem.wrap(Float.unwrap(LibDecimalFloat.packLossless(252.91299e5, -5)));
 
         checkHappy(
             bytes(
                 string.concat(
                     "using-words-from ",
                     address(pythWords).toHexString(),
-                    "price confidence: pyth-price(\"Equity.US.GOOG/USD\" 1080000),",
-                    ":ensure(equal-to(price 172.3176) \"bad price\"),",
-                    ":ensure(equal-to(confidence 2.00302) \"bad confidence\");"
+                    "price confidence: pyth-price(\"Equity.US.GOOG/USD\" 10800000),",
+                    ":ensure(equal-to(price 252.91299) \"bad price\"),",
+                    ":ensure(equal-to(confidence 0.17951) \"bad confidence\");"
                 )
             ),
             expectedStack,
-            "pyth-price(\"Equity.US.GOOG/USD\" 1080000)"
+            "pyth-price(\"Equity.US.GOOG/USD\" 10800000)"
         );
     }
 }
