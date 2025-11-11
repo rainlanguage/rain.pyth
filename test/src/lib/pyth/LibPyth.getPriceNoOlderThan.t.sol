@@ -35,80 +35,86 @@ contract LibPythGetPriceNoOlderThanTest is Test {
         checkPriceNoOlderThan(
             LibIntOrAString.fromString2("Crypto.BTC/USD"),
             LibDecimalFloat.packLossless(30 minutes, 0),
-            LibDecimalFloat.packLossless(106345.97372127e8, -8),
-            LibDecimalFloat.packLossless(42.72120769e8, -8)
+            LibDecimalFloat.packLossless(103000.24186427e8, -8),
+            LibDecimalFloat.packLossless(52.03163361e8, -8)
         );
         checkPriceNoOlderThan(
             LibIntOrAString.fromString2("Crypto.WBTC/USD"),
+            LibDecimalFloat.packLossless(60 minutes, 0),
+            LibDecimalFloat.packLossless(103135.4737378e8, -8),
+            LibDecimalFloat.packLossless(73.43314845e8, -8)
+        );
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Crypto.CBBTC/USD"),
             LibDecimalFloat.packLossless(30 minutes, 0),
-            LibDecimalFloat.packLossless(106193.79417862e8, -8),
-            LibDecimalFloat.packLossless(110.04339091e8, -8)
+            LibDecimalFloat.packLossless(103138.439578e8, -8),
+            LibDecimalFloat.packLossless(75.2658823e8, -8)
         );
         checkPriceNoOlderThan(
             LibIntOrAString.fromString2("Crypto.ETH/USD"),
             LibDecimalFloat.packLossless(30 minutes, 0),
-            LibDecimalFloat.packLossless(2526.40213905e8, -8),
-            LibDecimalFloat.packLossless(1.33646932e8, -8)
+            LibDecimalFloat.packLossless(3455.777e8, -8),
+            LibDecimalFloat.packLossless(1.85822327e8, -8)
         );
         checkPriceNoOlderThan(
             LibIntOrAString.fromString2("Crypto.WETH/USD"),
             LibDecimalFloat.packLossless(60 days, 0),
-            LibDecimalFloat.packLossless(1760.95597004e8, -8),
-            LibDecimalFloat.packLossless(7.6662261e8, -8)
+            LibDecimalFloat.packLossless(3474.79067028e8, -8),
+            LibDecimalFloat.packLossless(4.96764921e8, -8)
         );
         checkPriceNoOlderThan(
             LibIntOrAString.fromString2("Crypto.XRP/USD"),
             LibDecimalFloat.packLossless(2 hours, 0),
-            LibDecimalFloat.packLossless(2.28242476e8, -8),
-            LibDecimalFloat.packLossless(0.0012824e8, -8)
+            LibDecimalFloat.packLossless(2.41151002e8, -8),
+            LibDecimalFloat.packLossless(0.00130317e8, -8)
         );
         checkPriceNoOlderThan(
             LibIntOrAString.fromString2("Equity.US.GOOG/USD"),
-            LibDecimalFloat.packLossless(72 hours, 0),
-            LibDecimalFloat.packLossless(172.3176e5, -5),
-            LibDecimalFloat.packLossless(2.00302e5, -5)
+            LibDecimalFloat.packLossless(90 days, 0),
+            LibDecimalFloat.packLossless(252.91299e5, -5),
+            LibDecimalFloat.packLossless(0.17951e5, -5)
         );
         checkPriceNoOlderThan(
             LibIntOrAString.fromString2("Equity.US.AMZN/USD"),
-            LibDecimalFloat.packLossless(500 hours, 0),
-            LibDecimalFloat.packLossless(205.06198e5, -5),
-            LibDecimalFloat.packLossless(0.27188e5, -5)
+            LibDecimalFloat.packLossless(100 days, 0),
+            LibDecimalFloat.packLossless(227.27075e5, -5),
+            LibDecimalFloat.packLossless(2.45325e5, -5)
         );
         checkPriceNoOlderThan(
             LibIntOrAString.fromString2("Equity.US.AAPL/USD"),
-            LibDecimalFloat.packLossless(72 hours, 0),
-            LibDecimalFloat.packLossless(202.86002e5, -5),
-            LibDecimalFloat.packLossless(1.91401e5, -5)
+            LibDecimalFloat.packLossless(100 days, 0),
+            LibDecimalFloat.packLossless(255.00017e5, -5),
+            LibDecimalFloat.packLossless(0.52767e5, -5)
         );
         checkPriceNoOlderThan(
             LibIntOrAString.fromString2("Equity.US.MSFT/USD"),
-            LibDecimalFloat.packLossless(72 hours, 0),
-            LibDecimalFloat.packLossless(469.8035e5, -5),
-            LibDecimalFloat.packLossless(2.02763e5, -5)
+            LibDecimalFloat.packLossless(100 days, 0),
+            LibDecimalFloat.packLossless(522.19838e5, -5),
+            LibDecimalFloat.packLossless(0.43069e5, -5)
         );
         checkPriceNoOlderThan(
             LibIntOrAString.fromString2("Equity.US.TSLA/USD"),
-            LibDecimalFloat.packLossless(300 hours, 0),
-            LibDecimalFloat.packLossless(360.02978e5, -5),
-            LibDecimalFloat.packLossless(0.35259e5, -5)
+            LibDecimalFloat.packLossless(100 days, 0),
+            LibDecimalFloat.packLossless(315.47837e5, -5),
+            LibDecimalFloat.packLossless(0.40855e5, -5)
         );
         checkPriceNoOlderThan(
             LibIntOrAString.fromString2("Equity.US.NVDA/USD"),
-            LibDecimalFloat.packLossless(1000 hours, 0),
-            LibDecimalFloat.packLossless(104.5623e5, -5),
-            LibDecimalFloat.packLossless(0.1513e5, -5)
+            LibDecimalFloat.packLossless(100 days, 0),
+            LibDecimalFloat.packLossless(181.12249e5, -5),
+            LibDecimalFloat.packLossless(0.1829e5, -5)
         );
         checkPriceNoOlderThan(
             LibIntOrAString.fromString2("Equity.US.META/USD"),
-            LibDecimalFloat.packLossless(8000 hours, 0),
+            LibDecimalFloat.packLossless(500 days, 0),
             LibDecimalFloat.packLossless(448.73e5, -5),
             LibDecimalFloat.packLossless(0.72984e5, -5)
         );
         checkPriceNoOlderThan(
             LibIntOrAString.fromString2("Equity.US.GME/USD"),
             LibDecimalFloat.packLossless(8000 hours, 0),
-            LibDecimalFloat.packLossless(29.3177e5, -5),
-            LibDecimalFloat.packLossless(0.26199e5, -5)
+            LibDecimalFloat.packLossless(24.84804e5, -5),
+            LibDecimalFloat.packLossless(0.03914e5, -5)
         );
     }
 

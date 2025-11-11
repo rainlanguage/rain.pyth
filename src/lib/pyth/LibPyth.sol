@@ -21,6 +21,7 @@ library LibPyth {
     IPyth constant PRICE_FEED_CONTRACT_BASE = IPyth(0x8250f4aF4B972684F7b336503E2D6dFeDeB1487a);
 
     /// Crypto feeds.
+    /// https://docs.pyth.network/price-feeds/core/price-feeds/price-feed-ids
     /// BTC/USD
     bytes32 constant PRICE_FEED_ID_CRYPTO_BTC_USD = 0xe62df6c8b4a85fe1a67db44dc12de5db330f7ac66b72dc658afedf0f4a415b43;
     // slither-disable-next-line too-many-digits
@@ -31,6 +32,11 @@ library LibPyth {
     // slither-disable-next-line too-many-digits
     uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_WBTC_USD =
         uint256(0x8F43727970746F2E574254432F55534400000000000000000000000000000000);
+    /// CBBTC/USD
+    bytes32 constant PRICE_FEED_ID_CRYPTO_CBBTC_USD = 0x2817d7bfe5c64b8ea956e9a26f573ef64e72e4d7891f2d6af9bcc93f7aff9a97;
+    // slither-disable-next-line too-many-digits
+    uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_CBBTC_USD =
+        uint256(0x9043727970746F2E43424254432F555344000000000000000000000000000000);
     /// ETH/USD
     bytes32 constant PRICE_FEED_ID_CRYPTO_ETH_USD = 0xff61491a931112ddf1bd8147cd1b641375f79f5825126d665480874634fd0ace;
     // slither-disable-next-line too-many-digits
@@ -139,6 +145,8 @@ library LibPyth {
             return PRICE_FEED_ID_CRYPTO_BTC_USD;
         } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_WBTC_USD) {
             return PRICE_FEED_ID_CRYPTO_WBTC_USD;
+        } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_CBBTC_USD) {
+            return PRICE_FEED_ID_CRYPTO_CBBTC_USD;
         } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_ETH_USD) {
             return PRICE_FEED_ID_CRYPTO_ETH_USD;
         } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_WETH_USD) {
