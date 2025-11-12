@@ -14,8 +14,16 @@ contract LibPythConstantsTest is Test {
 
     function testIntorastringConstants() external pure {
         assertEq(
+            LibPyth.PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_ARB_USD,
+            IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.ARB/USD"))
+        );
+        assertEq(
             LibPyth.PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_BTC_USD,
             IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.BTC/USD"))
+        );
+        assertEq(
+            LibPyth.PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_ENA_USD,
+            IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.ENA/USD"))
         );
         assertEq(
             LibPyth.PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_WBTC_USD,
@@ -26,12 +34,32 @@ contract LibPythConstantsTest is Test {
             IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.CBBTC/USD"))
         );
         assertEq(
+            LibPyth.PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_DOT_USD,
+            IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.DOT/USD"))
+        );
+        assertEq(
             LibPyth.PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_ETH_USD,
             IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.ETH/USD"))
         );
         assertEq(
             LibPyth.PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_WETH_USD,
             IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.WETH/USD"))
+        );
+        assertEq(
+            LibPyth.PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_WSTETH_USD,
+            IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.WSTETH/USD"))
+        );
+        assertEq(
+            LibPyth.PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_LINK_USD,
+            IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.LINK/USD"))
+        );
+        assertEq(
+            LibPyth.PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_PEPE_USD,
+            IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.PEPE/USD"))
+        );
+        assertEq(
+            LibPyth.PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_UNI_USD,
+            IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.UNI/USD"))
         );
         assertEq(
             LibPyth.PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_XRP_USD,
