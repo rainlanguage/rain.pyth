@@ -37,6 +37,11 @@ library LibPyth {
     // slither-disable-next-line too-many-digits
     uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_CBBTC_USD =
         uint256(0x9043727970746F2E43424254432F555344000000000000000000000000000000);
+    /// DOT/USD
+    bytes32 constant PRICE_FEED_ID_CRYPTO_DOT_USD = 0xca3eed9b267293f6595901c734c7525ce8ef49adafe8284606ceb307afa2ca5b;
+    // slither-disable-next-line too-many-digits
+    uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_DOT_USD =
+        uint256(0x8E43727970746F2E444F542F5553440000000000000000000000000000000000);
     /// ETH/USD
     bytes32 constant PRICE_FEED_ID_CRYPTO_ETH_USD = 0xff61491a931112ddf1bd8147cd1b641375f79f5825126d665480874634fd0ace;
     // slither-disable-next-line too-many-digits
@@ -158,6 +163,8 @@ library LibPyth {
             return PRICE_FEED_ID_CRYPTO_WBTC_USD;
         } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_CBBTC_USD) {
             return PRICE_FEED_ID_CRYPTO_CBBTC_USD;
+        } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_DOT_USD) {
+            return PRICE_FEED_ID_CRYPTO_DOT_USD;
         } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_ETH_USD) {
             return PRICE_FEED_ID_CRYPTO_ETH_USD;
         } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_WETH_USD) {
