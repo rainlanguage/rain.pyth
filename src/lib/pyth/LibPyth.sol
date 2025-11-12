@@ -53,6 +53,11 @@ library LibPyth {
     // slither-disable-next-line too-many-digits
     uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_WSTETH_USD =
         uint256(0x9143727970746F2E5753544554482F5553440000000000000000000000000000);
+    /// LINK/USD
+    bytes32 constant PRICE_FEED_ID_CRYPTO_LINK_USD = 0x8ac0c70fff57e9aefdf5edf44b51d62c2d433653cbb2cf5cc06bb115af04d221;
+    // slither-disable-next-line too-many-digits
+    uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_LINK_USD =
+        uint256(0x8F43727970746F2E4C494E4B2F55534400000000000000000000000000000000);
     /// XRP/USD
     bytes32 constant PRICE_FEED_ID_CRYPTO_XRP_USD = 0xec5d399846a9209f3fe5881d70aae9268c94339ff9817e8d18ff19fa05eea1c8;
     // slither-disable-next-line too-many-digits
@@ -159,6 +164,8 @@ library LibPyth {
             return PRICE_FEED_ID_CRYPTO_WETH_USD;
         } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_WSTETH_USD) {
             return PRICE_FEED_ID_CRYPTO_WSTETH_USD;
+        } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_LINK_USD) {
+            return PRICE_FEED_ID_CRYPTO_LINK_USD;
         } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_XRP_USD) {
             return PRICE_FEED_ID_CRYPTO_XRP_USD;
         } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_GOOG_USD) {
