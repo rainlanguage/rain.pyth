@@ -22,6 +22,11 @@ library LibPyth {
 
     /// Crypto feeds.
     /// https://docs.pyth.network/price-feeds/core/price-feeds/price-feed-ids
+    /// ARB/USD
+    bytes32 constant PRICE_FEED_ID_CRYPTO_ARB_USD = 0x3fa4252848f9f0a1480be62745a4629d9eb1322aebab8a791e344b3b9c1adcf5;
+    // slither-disable-next-line too-many-digits
+    uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_ARB_USD =
+        uint256(0x8E43727970746F2E4152422F5553440000000000000000000000000000000000);
     /// BTC/USD
     bytes32 constant PRICE_FEED_ID_CRYPTO_BTC_USD = 0xe62df6c8b4a85fe1a67db44dc12de5db330f7ac66b72dc658afedf0f4a415b43;
     // slither-disable-next-line too-many-digits
@@ -42,6 +47,11 @@ library LibPyth {
     // slither-disable-next-line too-many-digits
     uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_DOT_USD =
         uint256(0x8E43727970746F2E444F542F5553440000000000000000000000000000000000);
+    /// ENA/USD
+    bytes32 constant PRICE_FEED_ID_CRYPTO_ENA_USD = 0xb7910ba7322db020416fcac28b48c01212fd9cc8fbcbaf7d30477ed8605f6bd4;
+    // slither-disable-next-line too-many-digits
+    uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_ENA_USD =
+        uint256(0x8E43727970746F2E454E412F5553440000000000000000000000000000000000);
     /// ETH/USD
     bytes32 constant PRICE_FEED_ID_CRYPTO_ETH_USD = 0xff61491a931112ddf1bd8147cd1b641375f79f5825126d665480874634fd0ace;
     // slither-disable-next-line too-many-digits
@@ -63,6 +73,16 @@ library LibPyth {
     // slither-disable-next-line too-many-digits
     uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_LINK_USD =
         uint256(0x8F43727970746F2E4C494E4B2F55534400000000000000000000000000000000);
+    /// PEPE/USD
+    bytes32 constant PRICE_FEED_ID_CRYPTO_PEPE_USD = 0xd69731a2e74ac1ce884fc3890f7ee324b6deb66147055249568869ed700882e4;
+    // slither-disable-next-line too-many-digits
+    uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_PEPE_USD =
+        uint256(0x8F43727970746F2E504550452F55534400000000000000000000000000000000);
+    /// UNI/USD
+    bytes32 constant PRICE_FEED_ID_CRYPTO_UNI_USD = 0x78d185a741d07edb3412b09008b7c5cfb9bbbd7d568bf00ba737b456ba171501;
+    // slither-disable-next-line too-many-digits
+    uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_UNI_USD =
+        uint256(0x8E43727970746F2E554E492F5553440000000000000000000000000000000000);
     /// XRP/USD
     bytes32 constant PRICE_FEED_ID_CRYPTO_XRP_USD = 0xec5d399846a9209f3fe5881d70aae9268c94339ff9817e8d18ff19fa05eea1c8;
     // slither-disable-next-line too-many-digits
@@ -157,7 +177,9 @@ library LibPyth {
     /// TODO replace with O(1) lookup table.
     function getPriceFeedId(IntOrAString feedSymbolIntOrAString) internal pure returns (bytes32) {
         uint256 feedSymbol = IntOrAString.unwrap(feedSymbolIntOrAString);
-        if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_BTC_USD) {
+        if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_ARB_USD) {
+            return PRICE_FEED_ID_CRYPTO_ARB_USD;
+        } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_BTC_USD) {
             return PRICE_FEED_ID_CRYPTO_BTC_USD;
         } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_WBTC_USD) {
             return PRICE_FEED_ID_CRYPTO_WBTC_USD;
@@ -165,6 +187,8 @@ library LibPyth {
             return PRICE_FEED_ID_CRYPTO_CBBTC_USD;
         } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_DOT_USD) {
             return PRICE_FEED_ID_CRYPTO_DOT_USD;
+        } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_ENA_USD) {
+            return PRICE_FEED_ID_CRYPTO_ENA_USD;
         } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_ETH_USD) {
             return PRICE_FEED_ID_CRYPTO_ETH_USD;
         } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_WETH_USD) {
@@ -173,6 +197,10 @@ library LibPyth {
             return PRICE_FEED_ID_CRYPTO_WSTETH_USD;
         } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_LINK_USD) {
             return PRICE_FEED_ID_CRYPTO_LINK_USD;
+        } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_PEPE_USD) {
+            return PRICE_FEED_ID_CRYPTO_PEPE_USD;
+        } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_UNI_USD) {
+            return PRICE_FEED_ID_CRYPTO_UNI_USD;
         } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_XRP_USD) {
             return PRICE_FEED_ID_CRYPTO_XRP_USD;
         } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_GOOG_USD) {
