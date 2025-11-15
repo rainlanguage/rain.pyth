@@ -58,8 +58,16 @@ contract LibPythConstantsTest is Test {
             IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.PEPE/USD"))
         );
         assertEq(
+            LibPyth.PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_PYTH_USD,
+            IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.PYTH/USD"))
+        );
+        assertEq(
             LibPyth.PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_UNI_USD,
             IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.UNI/USD"))
+        );
+        assertEq(
+            LibPyth.PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_XAUT_USD,
+            IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.XAUT/USD"))
         );
         assertEq(
             LibPyth.PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_XRP_USD,
