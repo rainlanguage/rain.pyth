@@ -78,11 +78,21 @@ library LibPyth {
     // slither-disable-next-line too-many-digits
     uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_PEPE_USD =
         uint256(0x8F43727970746F2E504550452F55534400000000000000000000000000000000);
+    /// PYTH/USD
+    bytes32 constant PRICE_FEED_ID_CRYPTO_PYTH_USD = 0x0bbf28e9a841a1cc788f6a361b17ca072d0ea3098a1e5df1c3922d06719579ff;
+    // slither-disable-next-line too-many-digits
+    uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_PYTH_USD =
+        uint256(0x8F43727970746F2E505954482F55534400000000000000000000000000000000);
     /// UNI/USD
     bytes32 constant PRICE_FEED_ID_CRYPTO_UNI_USD = 0x78d185a741d07edb3412b09008b7c5cfb9bbbd7d568bf00ba737b456ba171501;
     // slither-disable-next-line too-many-digits
     uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_UNI_USD =
         uint256(0x8E43727970746F2E554E492F5553440000000000000000000000000000000000);
+    /// XAUT/USD
+    bytes32 constant PRICE_FEED_ID_CRYPTO_XAUT_USD = 0x44465e17d2e9d390e70c999d5a11fda4f092847fcd2e3e5aa089d96c98a30e67;
+    // slither-disable-next-line too-many-digits
+    uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_XAUT_USD =
+        uint256(0x8F43727970746F2E584155542F55534400000000000000000000000000000000);
     /// XRP/USD
     bytes32 constant PRICE_FEED_ID_CRYPTO_XRP_USD = 0xec5d399846a9209f3fe5881d70aae9268c94339ff9817e8d18ff19fa05eea1c8;
     // slither-disable-next-line too-many-digits
@@ -199,8 +209,12 @@ library LibPyth {
             return PRICE_FEED_ID_CRYPTO_LINK_USD;
         } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_PEPE_USD) {
             return PRICE_FEED_ID_CRYPTO_PEPE_USD;
+        } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_PYTH_USD) {
+            return PRICE_FEED_ID_CRYPTO_PYTH_USD;
         } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_UNI_USD) {
             return PRICE_FEED_ID_CRYPTO_UNI_USD;
+        } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_XAUT_USD) {
+            return PRICE_FEED_ID_CRYPTO_XAUT_USD;
         } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_XRP_USD) {
             return PRICE_FEED_ID_CRYPTO_XRP_USD;
         } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_GOOG_USD) {

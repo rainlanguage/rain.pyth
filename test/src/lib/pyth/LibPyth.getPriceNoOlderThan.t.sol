@@ -99,10 +99,22 @@ contract LibPythGetPriceNoOlderThanTest is Test {
             LibDecimalFloat.packLossless(0.0000000105e10, -10)
         );
         checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Crypto.PYTH/USD"),
+            LibDecimalFloat.packLossless(2 days, 0),
+            LibDecimalFloat.packLossless(0.10425667e8, -8),
+            LibDecimalFloat.packLossless(0.0001372e8, -8)
+        );
+        checkPriceNoOlderThan(
             LibIntOrAString.fromString2("Crypto.UNI/USD"),
             LibDecimalFloat.packLossless(2 days, 0),
             LibDecimalFloat.packLossless(8.66789332e8, -8),
             LibDecimalFloat.packLossless(0.00858892e8, -8)
+        );
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Crypto.XAUT/USD"),
+            LibDecimalFloat.packLossless(500 days, 0),
+            LibDecimalFloat.packLossless(2624.06053898e8, -8),
+            LibDecimalFloat.packLossless(5.95231113e8, -8)
         );
         checkPriceNoOlderThan(
             LibIntOrAString.fromString2("Crypto.XRP/USD"),
