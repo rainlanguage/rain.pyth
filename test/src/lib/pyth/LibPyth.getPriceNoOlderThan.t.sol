@@ -225,7 +225,7 @@ contract LibPythGetPriceNoOlderThanTest is Test {
         checkPriceNoOlderThan(
             LibIntOrAString.fromString2("Equity.US.MSTR/USD"),
             LibDecimalFloat.packLossless(24 hours, 0),
-            LibDecimalFloat.packLossless(183.90070e5, -5),
+            LibDecimalFloat.packLossless(183.9007e5, -5),
             LibDecimalFloat.packLossless(0.17456e5, -5)
         );
         checkPriceNoOlderThan(
@@ -250,7 +250,7 @@ contract LibPythGetPriceNoOlderThanTest is Test {
         checkPriceNoOlderThan(
             LibIntOrAString.fromString2("Equity.US.COIN/USD"),
             LibDecimalFloat.packLossless(24 hours, 0),
-            LibDecimalFloat.packLossless(276.53500e5, -5),
+            LibDecimalFloat.packLossless(276.535e5, -5),
             LibDecimalFloat.packLossless(0.18138e5, -5)
         );
     }

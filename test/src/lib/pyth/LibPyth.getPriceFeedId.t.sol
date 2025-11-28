@@ -67,7 +67,8 @@ contract LibPythGetPriceFeedIdTest is Test {
             LibPyth.PRICE_FEED_ID_CRYPTO_XRP_USD, LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Crypto.XRP/USD"))
         );
         assertEq(
-            LibPyth.PRICE_FEED_ID_EQUITY_US_COIN_USD, LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.COIN/USD"))
+            LibPyth.PRICE_FEED_ID_EQUITY_US_COIN_USD,
+            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.COIN/USD"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_EQUITY_US_GOOG_USD,
