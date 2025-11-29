@@ -67,6 +67,10 @@ contract LibPythGetPriceFeedIdTest is Test {
             LibPyth.PRICE_FEED_ID_CRYPTO_XRP_USD, LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Crypto.XRP/USD"))
         );
         assertEq(
+            LibPyth.PRICE_FEED_ID_EQUITY_US_COIN_USD,
+            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.COIN/USD"))
+        );
+        assertEq(
             LibPyth.PRICE_FEED_ID_EQUITY_US_GOOG_USD,
             LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.GOOG/USD"))
         );
@@ -133,6 +137,7 @@ contract LibPythGetPriceFeedIdTest is Test {
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.UNI/USD"))
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.XAUT/USD"))
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.XRP/USD"))
+                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.COIN/USD"))
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.GOOG/USD"))
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.AMZN/USD"))
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.AAPL/USD"))

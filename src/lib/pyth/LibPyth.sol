@@ -172,6 +172,12 @@ library LibPyth {
     // slither-disable-next-line too-many-digits
     uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_IAU_USD =
         0x914571756974792e55532e4941552f5553440000000000000000000000000000;
+    /// COIN/USD
+    bytes32 constant PRICE_FEED_ID_EQUITY_US_COIN_USD =
+        0xfee33f2a978bf32dd6b662b65ba8083c6773b494f8401194ec1870c640860245;
+    // slither-disable-next-line too-many-digits
+    uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_COIN_USD =
+        uint256(0x924571756974792e55532e434f494e2f55534400000000000000000000000000);
 
     /// TODO replace with O(1) lookup table.
     function getPriceFeedContract(uint256 chainId) internal pure returns (IPyth) {
@@ -217,6 +223,8 @@ library LibPyth {
             return PRICE_FEED_ID_CRYPTO_XAUT_USD;
         } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_XRP_USD) {
             return PRICE_FEED_ID_CRYPTO_XRP_USD;
+        } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_COIN_USD) {
+            return PRICE_FEED_ID_EQUITY_US_COIN_USD;
         } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_GOOG_USD) {
             return PRICE_FEED_ID_EQUITY_US_GOOG_USD;
         } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_AMZN_USD) {
