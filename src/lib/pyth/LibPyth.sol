@@ -178,6 +178,12 @@ library LibPyth {
     // slither-disable-next-line too-many-digits
     uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_COIN_USD =
         uint256(0x924571756974792e55532e434f494e2f55534400000000000000000000000000);
+    /// COIN/USD
+    bytes32 constant PRICE_FEED_ID_EQUITY_US_SIVR_USD =
+        0x0a5ee42b0f7287a777926d08bc185a6a60f42f40a9b63d78d85d4a03ee2e3737;
+    // slither-disable-next-line too-many-digits
+    uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_SIVR_USD =
+        uint256(0x924571756974792e55532e534956522f55534400000000000000000000000000);
 
     /// TODO replace with O(1) lookup table.
     function getPriceFeedContract(uint256 chainId) internal pure returns (IPyth) {
@@ -249,6 +255,8 @@ library LibPyth {
             return PRICE_FEED_ID_EQUITY_US_SPLG_USD;
         } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_IAU_USD) {
             return PRICE_FEED_ID_EQUITY_US_IAU_USD;
+        } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_SIVR_USD) {
+            return PRICE_FEED_ID_EQUITY_US_SIVR_USD;
         } else {
             revert UnsupportedFeedSymbol();
         }
