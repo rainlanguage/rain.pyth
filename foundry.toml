@@ -16,7 +16,7 @@ fs_permissions = [
     { access = "read-write", path = "meta" },
 ]
 
-evm_version = "paris"
+evm_version = "cancun"
 
 optimizer = true
 optimizer_runs = 1000
