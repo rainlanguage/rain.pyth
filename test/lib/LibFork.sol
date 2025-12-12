@@ -6,4 +6,4 @@ string constant FORK_RPC_URL_ARBITRUM = "https://arbitrum.gateway.tenderly.co";
 string constant FORK_RPC_URL_BASE = "https://base.gateway.tenderly.co";
 
 uint256 constant FORK_BLOCK_ARBITRUM = 399225617;
-uint256 constant FORK_BLOCK_BASE = 38996123;
+uint256 constant FORK_BLOCK_BASE = 39366248;
