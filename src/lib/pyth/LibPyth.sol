@@ -194,7 +194,7 @@ library LibPyth {
     // slither-disable-next-line too-many-digits
     uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_MSTR_USD_POST =
         0x974571756974792e55532e4d5354522f5553442e504f53540000000000000000;
-    
+
     /// Berkshire Hathaway Class B (BRK-B)
     bytes32 constant PRICE_FEED_ID_EQUITY_US_BRK_B_USD =
         0xe21c688b7fc65b4606a50f3635f466f6986db129bf16979875d160f9c508e8c7;
