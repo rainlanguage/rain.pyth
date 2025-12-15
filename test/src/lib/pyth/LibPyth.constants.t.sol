@@ -169,5 +169,9 @@ contract LibPythConstantsTest is Test {
             LibPyth.PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_SIVR_USD,
             IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.SIVR/USD"))
         );
+        assertEq(
+            LibPyth.PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_CRCL_USD,
+            IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.CRCL/USD"))
+        );
     }
 }

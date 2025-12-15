@@ -320,4 +320,14 @@ contract LibPythGetPriceNoOlderThanTest is Test {
             LibDecimalFloat.packLossless(0.05473e5, -5)
         );
     }
+
+    function testPriceNoOlderThanBaseCrcl() external {
+        vm.createSelectFork(FORK_RPC_URL_BASE, 39514975);
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Equity.US.CRCL/USD"),
+            LibDecimalFloat.packLossless(24 hours, 0),
+            LibDecimalFloat.packLossless(76.60999e5, -5),
+            LibDecimalFloat.packLossless(0.07508e5, -5)
+        );
+    }
 }
