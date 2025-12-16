@@ -4,7 +4,13 @@ pragma solidity ^0.8.25;
 
 import {Test, console2} from "forge-std/Test.sol";
 import {LibPyth} from "src/lib/pyth/LibPyth.sol";
-import {FORK_RPC_URL_ARBITRUM, FORK_RPC_URL_BASE, FORK_BLOCK_ARBITRUM, FORK_BLOCK_BASE} from "test/lib/LibFork.sol";
+import {
+    FORK_RPC_URL_ARBITRUM,
+    FORK_RPC_URL_BASE,
+    FORK_BLOCK_ARBITRUM,
+    FORK_BLOCK_BASE,
+    FORK_BLOCK_BASE_CRCL
+} from "test/lib/LibFork.sol";
 import {IntOrAString, LibIntOrAString} from "rain.intorastring/lib/LibIntOrAString.sol";
 import {Float, LibDecimalFloat} from "rain.math.float/lib/LibDecimalFloat.sol";
 
@@ -322,7 +328,7 @@ contract LibPythGetPriceNoOlderThanTest is Test {
     }
 
     function testPriceNoOlderThanBaseCrcl() external {
-        vm.createSelectFork(FORK_RPC_URL_BASE, 39514975);
+        vm.createSelectFork(FORK_RPC_URL_BASE, FORK_BLOCK_BASE_CRCL);
         checkPriceNoOlderThan(
             LibIntOrAString.fromString2("Equity.US.CRCL/USD"),
             LibDecimalFloat.packLossless(24 hours, 0),
