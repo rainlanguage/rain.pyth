@@ -333,8 +333,20 @@ contract LibPythGetPriceNoOlderThanTest is Test {
         checkPriceNoOlderThan(
             LibIntOrAString.fromString2("Equity.US.CRCL/USD"),
             LibDecimalFloat.packLossless(24 hours, 0),
-            LibDecimalFloat.packLossless(76.60999e5, -5),
-            LibDecimalFloat.packLossless(0.07508e5, -5)
+            LibDecimalFloat.packLossless(79.12510e5, -5),
+            LibDecimalFloat.packLossless(0.05449e5, -5)
+        );
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Equity.US.CRCL/USD.PRE"),
+            LibDecimalFloat.packLossless(24 hours, 0),
+            LibDecimalFloat.packLossless(82.77550e5, -5),
+            LibDecimalFloat.packLossless(0.17305e5, -5)
+        );
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Equity.US.CRCL/USD.POST"),
+            LibDecimalFloat.packLossless(24 hours, 0),
+            LibDecimalFloat.packLossless(79.86199e5, -5),
+            LibDecimalFloat.packLossless(0.24159e5, -5)
         );
     }
 

@@ -241,6 +241,16 @@ library LibPyth {
     // slither-disable-next-line too-many-digits
     uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_CRCL_USD =
         uint256(0x924571756974792e55532e4352434c2f55534400000000000000000000000000);
+    bytes32 constant PRICE_FEED_ID_EQUITY_US_CRCL_USD_PRE =
+        0xb6ce1644a22bb348f89a81696141c1caaca5e7ea83de289a44fba1a9897ca2d6;
+    // slither-disable-next-line too-many-digits
+    uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_CRCL_USD_PRE =
+        uint256(0x964571756974792e55532e4352434c2f5553442e505245000000000000000000);
+    bytes32 constant PRICE_FEED_ID_EQUITY_US_CRCL_USD_POST =
+        0x9bdba52fbb3d588d573928b1e781c6441e446a83c011fed92d8362c5b309ce02;
+    // slither-disable-next-line too-many-digits
+    uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_CRCL_USD_POST =
+        uint256(0x974571756974792e55532e4352434c2f5553442e504f53540000000000000000);
     /// PPLT/USD
     bytes32 constant PRICE_FEED_ID_EQUITY_US_PPLT_USD =
         0x782410278b6c8aa2d437812281526012808404aa14c243f73fb9939eeb88d430;
@@ -342,6 +352,10 @@ library LibPyth {
             return PRICE_FEED_ID_EQUITY_US_SIVR_USD;
         } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_CRCL_USD) {
             return PRICE_FEED_ID_EQUITY_US_CRCL_USD;
+        } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_CRCL_USD_PRE) {
+            return PRICE_FEED_ID_EQUITY_US_CRCL_USD_PRE;
+        } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_CRCL_USD_POST) {
+            return PRICE_FEED_ID_EQUITY_US_CRCL_USD_POST;
         } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_PPLT_USD) {
             return PRICE_FEED_ID_EQUITY_US_PPLT_USD;
         } else {
