@@ -258,6 +258,23 @@ library LibPyth {
     uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_PPLT_USD =
         uint256(0x924571756974792e55532e50504c542f55534400000000000000000000000000);
 
+    /// BMNR/USD
+    bytes32 constant PRICE_FEED_ID_EQUITY_US_BMNR_USD =
+        0x54e2e127c93950de5a710100fd1cd387aba1ec8920850efdb05da5fee57d2e32;
+    // slither-disable-next-line too-many-digits
+    uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_BMNR_USD =
+        uint256(0x924571756974792e55532e424d4e522f55534400000000000000000000000000);
+    bytes32 constant PRICE_FEED_ID_EQUITY_US_BMNR_USD_PRE =
+        0xdaea80499153cb48810997522660713648050c15b4e6b83676f0de18fa959e60;
+    // slither-disable-next-line too-many-digits
+    uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_BMNR_USD_PRE =
+        uint256(0x964571756974792e55532e424d4e522f5553442e505245000000000000000000);
+    bytes32 constant PRICE_FEED_ID_EQUITY_US_BMNR_USD_POST =
+        0x3f522db0b88d785cbe5e8db88e0573b3d3aa9061c78900f59334f155018d31c3;
+    // slither-disable-next-line too-many-digits
+    uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_BMNR_USD_POST =
+        uint256(0x974571756974792e55532e424d4e522f5553442e504f53540000000000000000);
+
     /// TODO replace with O(1) lookup table.
     function getPriceFeedContract(uint256 chainId) internal pure returns (IPyth) {
         if (chainId == CHAIN_ID_ARBITRUM) {
@@ -358,6 +375,12 @@ library LibPyth {
             return PRICE_FEED_ID_EQUITY_US_CRCL_USD_POST;
         } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_PPLT_USD) {
             return PRICE_FEED_ID_EQUITY_US_PPLT_USD;
+        } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_BMNR_USD) {
+            return PRICE_FEED_ID_EQUITY_US_BMNR_USD;
+        } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_BMNR_USD_PRE) {
+            return PRICE_FEED_ID_EQUITY_US_BMNR_USD_PRE;
+        } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_BMNR_USD_POST) {
+            return PRICE_FEED_ID_EQUITY_US_BMNR_USD_POST;
         } else {
             revert UnsupportedFeedSymbol();
         }

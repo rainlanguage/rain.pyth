@@ -147,6 +147,18 @@ contract LibPythGetPriceFeedIdTest is Test {
             LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.MSTR/USD.POST"))
         );
         assertEq(
+            LibPyth.PRICE_FEED_ID_EQUITY_US_BMNR_USD,
+            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.BMNR/USD"))
+        );
+        assertEq(
+            LibPyth.PRICE_FEED_ID_EQUITY_US_BMNR_USD_PRE,
+            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.BMNR/USD.PRE"))
+        );
+        assertEq(
+            LibPyth.PRICE_FEED_ID_EQUITY_US_BMNR_USD_POST,
+            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.BMNR/USD.POST"))
+        );
+        assertEq(
             LibPyth.PRICE_FEED_ID_EQUITY_US_BRK_B_USD,
             LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.BRK-B/USD"))
         );
@@ -223,6 +235,10 @@ contract LibPythGetPriceFeedIdTest is Test {
                 && IntOrAString.unwrap(symbol)
                     != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.CRCL/USD.POST"))
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.PPLT/USD"))
+                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.BMNR/USD"))
+                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.BMNR/USD.PRE"))
+                && IntOrAString.unwrap(symbol)
+                    != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.BMNR/USD.POST"))
         );
         vm.expectRevert(UnsupportedFeedSymbol.selector);
         this.getPriceFeedIdExternal(symbol);
