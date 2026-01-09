@@ -274,6 +274,12 @@ library LibPyth {
     // slither-disable-next-line too-many-digits
     uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_BMNR_USD_POST =
         uint256(0x974571756974792e55532e424d4e522f5553442e504f53540000000000000000);
+    /// RKLB/USD
+    bytes32 constant PRICE_FEED_ID_EQUITY_US_RKLB_USD =
+        0x40589e289317e4fbd997b1a267606e20a1cc7c3e4689f9e5a5992957917816c8;
+    // slither-disable-next-line too-many-digits
+    uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_RKLB_USD =
+        uint256(0x924571756974792e55532e524b4c422f55534400000000000000000000000000);
 
     /// TODO replace with O(1) lookup table.
     function getPriceFeedContract(uint256 chainId) internal pure returns (IPyth) {
@@ -381,6 +387,8 @@ library LibPyth {
             return PRICE_FEED_ID_EQUITY_US_BMNR_USD_PRE;
         } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_BMNR_USD_POST) {
             return PRICE_FEED_ID_EQUITY_US_BMNR_USD_POST;
+        } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_RKLB_USD) {
+            return PRICE_FEED_ID_EQUITY_US_RKLB_USD;
         } else {
             revert UnsupportedFeedSymbol();
         }

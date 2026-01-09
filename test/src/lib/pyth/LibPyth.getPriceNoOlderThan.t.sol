@@ -11,7 +11,8 @@ import {
     FORK_BLOCK_BASE,
     FORK_BLOCK_BASE_CRCL,
     FORK_BLOCK_BASE_PPLT,
-    FORK_BLOCK_BASE_BMNR
+    FORK_BLOCK_BASE_BMNR,
+    FORK_BLOCK_BASE_RKLB
 } from "test/lib/LibFork.sol";
 import {IntOrAString, LibIntOrAString} from "rain.intorastring/lib/LibIntOrAString.sol";
 import {Float, LibDecimalFloat} from "rain.math.float/lib/LibDecimalFloat.sol";
@@ -380,6 +381,16 @@ contract LibPythGetPriceNoOlderThanTest is Test {
             LibDecimalFloat.packLossless(24 hours, 0),
             LibDecimalFloat.packLossless(33.00197e5, -5),
             LibDecimalFloat.packLossless(0.13126e5, -5)
+        );
+    }
+
+    function testPriceNoOlderThanBaseRklb() external {
+        vm.createSelectFork(FORK_RPC_URL_BASE, FORK_BLOCK_BASE_RKLB);
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Equity.US.RKLB/USD"),
+            LibDecimalFloat.packLossless(24 hours, 0),
+            LibDecimalFloat.packLossless(83.03886e5, -5),
+            LibDecimalFloat.packLossless(0.12886e5, -5)
         );
     }
 }
