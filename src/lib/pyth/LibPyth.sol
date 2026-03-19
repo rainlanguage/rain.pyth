@@ -281,6 +281,14 @@ library LibPyth {
     uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_RKLB_USD =
         uint256(0x924571756974792e55532e524b4c422f55534400000000000000000000000000);
 
+    /// Commodity feeds.
+    /// UKOILSPOT (Brent Crude Oil CFD)
+    bytes32 constant PRICE_FEED_ID_COMMODITIES_UKOILSPOT =
+        0x27f0d5e09a830083e5491795cac9ca521399c8f7fd56240d09484b14e614d57a;
+    // slither-disable-next-line too-many-digits
+    uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_COMMODITIES_UKOILSPOT =
+        uint256(0x95436f6d6d6f6469746965732e554b4f494c53504f5400000000000000000000);
+
     /// TODO replace with O(1) lookup table.
     function getPriceFeedContract(uint256 chainId) internal pure returns (IPyth) {
         if (chainId == CHAIN_ID_ARBITRUM) {
@@ -389,6 +397,8 @@ library LibPyth {
             return PRICE_FEED_ID_EQUITY_US_BMNR_USD_POST;
         } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_RKLB_USD) {
             return PRICE_FEED_ID_EQUITY_US_RKLB_USD;
+        } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_COMMODITIES_UKOILSPOT) {
+            return PRICE_FEED_ID_COMMODITIES_UKOILSPOT;
         } else {
             revert UnsupportedFeedSymbol();
         }
