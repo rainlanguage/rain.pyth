@@ -399,7 +399,7 @@ contract LibPythGetPriceNoOlderThanTest is Test {
         vm.createSelectFork(FORK_RPC_URL_BASE, FORK_BLOCK_BASE_UKOILSPOT);
         checkPriceNoOlderThan(
             LibIntOrAString.fromString2("Commodities.UKOILSPOT"),
-            LibDecimalFloat.packLossless(7 days, 0),
+            LibDecimalFloat.packLossless(24 hours, 0),
             LibDecimalFloat.packLossless(6030017, -5),
             LibDecimalFloat.packLossless(15811, -5)
         );
