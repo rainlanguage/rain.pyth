@@ -12,7 +12,8 @@ import {
     FORK_BLOCK_BASE_CRCL,
     FORK_BLOCK_BASE_PPLT,
     FORK_BLOCK_BASE_BMNR,
-    FORK_BLOCK_BASE_RKLB
+    FORK_BLOCK_BASE_RKLB,
+    FORK_BLOCK_BASE_SGOV
 } from "test/lib/LibFork.sol";
 import {IntOrAString, LibIntOrAString} from "rain.intorastring/lib/LibIntOrAString.sol";
 import {Float, LibDecimalFloat} from "rain.math.float/lib/LibDecimalFloat.sol";
@@ -393,4 +394,14 @@ contract LibPythGetPriceNoOlderThanTest is Test {
             LibDecimalFloat.packLossless(0.12886e5, -5)
         );
     }
+    function testPriceNoOlderThanBaseSgov() external {
+        vm.createSelectFork(FORK_RPC_URL_BASE, FORK_BLOCK_BASE_SGOV);
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Equity.US.SGOV/USD"),
+            LibDecimalFloat.packLossless(48 hours, 0),
+            LibDecimalFloat.packLossless(100.56505e5, -5),
+            LibDecimalFloat.packLossless(0.10552e5, -5)
+        );
+    }
+
 }
