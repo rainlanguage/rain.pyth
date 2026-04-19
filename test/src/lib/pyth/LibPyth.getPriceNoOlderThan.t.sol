@@ -394,6 +394,7 @@ contract LibPythGetPriceNoOlderThanTest is Test {
             LibDecimalFloat.packLossless(0.12886e5, -5)
         );
     }
+
     function testPriceNoOlderThanBaseSgov() external {
         vm.createSelectFork(FORK_RPC_URL_BASE, FORK_BLOCK_BASE_SGOV);
         checkPriceNoOlderThan(
@@ -403,5 +404,4 @@ contract LibPythGetPriceNoOlderThanTest is Test {
             LibDecimalFloat.packLossless(0.10552e5, -5)
         );
     }
-
 }
