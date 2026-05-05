@@ -306,8 +306,6 @@ library LibPyth {
     uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_ARKK_USD =
         uint256(0x924571756974792e55532e41524b4b2f55534400000000000000000000000000);
 
-    
-
     /// TODO replace with O(1) lookup table.
     function getPriceFeedContract(uint256 chainId) internal pure returns (IPyth) {
         if (chainId == CHAIN_ID_ARBITRUM) {

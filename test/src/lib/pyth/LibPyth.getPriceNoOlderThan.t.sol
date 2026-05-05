@@ -414,7 +414,7 @@ contract LibPythGetPriceNoOlderThanTest is Test {
             LibIntOrAString.fromString2("Equity.US.QQQM/USD"),
             LibDecimalFloat.packLossless(24 hours, 0),
             LibDecimalFloat.packLossless(280.82007e5, -5),
-            LibDecimalFloat.packLossless(0.15040e5, -5)
+            LibDecimalFloat.packLossless(0.1504e5, -5)
         );
     }
 
@@ -437,6 +437,4 @@ contract LibPythGetPriceNoOlderThanTest is Test {
             LibDecimalFloat.packLossless(0.04361e5, -5)
         );
     }
-
-    
 }
