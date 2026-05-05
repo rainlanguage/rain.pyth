@@ -13,7 +13,10 @@ import {
     FORK_BLOCK_BASE_PPLT,
     FORK_BLOCK_BASE_BMNR,
     FORK_BLOCK_BASE_RKLB,
-    FORK_BLOCK_BASE_SGOV
+    FORK_BLOCK_BASE_SGOV,
+    FORK_BLOCK_BASE_QQQM,
+    FORK_BLOCK_BASE_VWO,
+    FORK_BLOCK_BASE_ARKK
 } from "test/lib/LibFork.sol";
 import {IntOrAString, LibIntOrAString} from "rain.intorastring/lib/LibIntOrAString.sol";
 import {Float, LibDecimalFloat} from "rain.math.float/lib/LibDecimalFloat.sol";
@@ -404,4 +407,36 @@ contract LibPythGetPriceNoOlderThanTest is Test {
             LibDecimalFloat.packLossless(0.10552e5, -5)
         );
     }
+
+    function testPriceNoOlderThanBaseQqqm() external {
+        vm.createSelectFork(FORK_RPC_URL_BASE, FORK_BLOCK_BASE_QQQM);
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Equity.US.QQQM/USD"),
+            LibDecimalFloat.packLossless(24 hours, 0),
+            LibDecimalFloat.packLossless(280.82007e5, -5),
+            LibDecimalFloat.packLossless(0.15040e5, -5)
+        );
+    }
+
+    function testPriceNoOlderThanBaseVwo() external {
+        vm.createSelectFork(FORK_RPC_URL_BASE, FORK_BLOCK_BASE_VWO);
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Equity.US.VWO/USD"),
+            LibDecimalFloat.packLossless(24 hours, 0),
+            LibDecimalFloat.packLossless(59.39244e5, -5),
+            LibDecimalFloat.packLossless(0.05683e5, -5)
+        );
+    }
+
+    function testPriceNoOlderThanBaseArkk() external {
+        vm.createSelectFork(FORK_RPC_URL_BASE, FORK_BLOCK_BASE_ARKK);
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Equity.US.ARKK/USD"),
+            LibDecimalFloat.packLossless(24 hours, 0),
+            LibDecimalFloat.packLossless(76.69477e5, -5),
+            LibDecimalFloat.packLossless(0.04361e5, -5)
+        );
+    }
+
+    
 }
