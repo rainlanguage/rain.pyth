@@ -38,7 +38,8 @@ library LibPyth {
     uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_WBTC_USD =
         uint256(0x8F43727970746F2E574254432F55534400000000000000000000000000000000);
     /// CBBTC/USD
-    bytes32 constant PRICE_FEED_ID_CRYPTO_CBBTC_USD = 0x2817d7bfe5c64b8ea956e9a26f573ef64e72e4d7891f2d6af9bcc93f7aff9a97;
+    bytes32 constant PRICE_FEED_ID_CRYPTO_CBBTC_USD =
+        0x2817d7bfe5c64b8ea956e9a26f573ef64e72e4d7891f2d6af9bcc93f7aff9a97;
     // slither-disable-next-line too-many-digits
     uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_CRYPTO_CBBTC_USD =
         uint256(0x9043727970746F2E43424254432F555344000000000000000000000000000000);
@@ -280,6 +281,30 @@ library LibPyth {
     // slither-disable-next-line too-many-digits
     uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_RKLB_USD =
         uint256(0x924571756974792e55532e524b4c422f55534400000000000000000000000000);
+    /// SGOV/USD
+    bytes32 constant PRICE_FEED_ID_EQUITY_US_SGOV_USD =
+        0x8d6a29bb5ed522931d711bb12c4bbf92af986936e52af582032913b5ffcbf4d5;
+    // slither-disable-next-line too-many-digits
+    uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_SGOV_USD =
+        uint256(0x924571756974792e55532e53474f562f55534400000000000000000000000000);
+    /// QQQM/USD
+    bytes32 constant PRICE_FEED_ID_EQUITY_US_QQQM_USD =
+        0x433b196b3b026f46f76b5e901c84c575a7280dcba0f4272edefe0529b599ad64;
+    // slither-disable-next-line too-many-digits
+    uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_QQQM_USD =
+        uint256(0x924571756974792e55532e5151514d2f55534400000000000000000000000000);
+    /// VWO/USD
+    bytes32 constant PRICE_FEED_ID_EQUITY_US_VWO_USD =
+        0x2f91d775954c0c828d4563448d253cf09df218b620825242775d878d1d5956c7;
+    // slither-disable-next-line too-many-digits
+    uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_VWO_USD =
+        uint256(0x914571756974792e55532e56574f2f5553440000000000000000000000000000);
+    /// ARKK/USD
+    bytes32 constant PRICE_FEED_ID_EQUITY_US_ARKK_USD =
+        0xb2fe0af6c828efefda3ffda664f919825a535aa28a0f19fc238945c7aff540b1;
+    // slither-disable-next-line too-many-digits
+    uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_ARKK_USD =
+        uint256(0x924571756974792e55532e41524b4b2f55534400000000000000000000000000);
 
     /// TODO replace with O(1) lookup table.
     function getPriceFeedContract(uint256 chainId) internal pure returns (IPyth) {
@@ -389,6 +414,14 @@ library LibPyth {
             return PRICE_FEED_ID_EQUITY_US_BMNR_USD_POST;
         } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_RKLB_USD) {
             return PRICE_FEED_ID_EQUITY_US_RKLB_USD;
+        } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_SGOV_USD) {
+            return PRICE_FEED_ID_EQUITY_US_SGOV_USD;
+        } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_QQQM_USD) {
+            return PRICE_FEED_ID_EQUITY_US_QQQM_USD;
+        } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_VWO_USD) {
+            return PRICE_FEED_ID_EQUITY_US_VWO_USD;
+        } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_ARKK_USD) {
+            return PRICE_FEED_ID_EQUITY_US_ARKK_USD;
         } else {
             revert UnsupportedFeedSymbol();
         }

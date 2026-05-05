@@ -186,6 +186,22 @@ contract LibPythGetPriceFeedIdTest is Test {
             LibPyth.PRICE_FEED_ID_EQUITY_US_RKLB_USD,
             LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.RKLB/USD"))
         );
+        assertEq(
+            LibPyth.PRICE_FEED_ID_EQUITY_US_SGOV_USD,
+            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.SGOV/USD"))
+        );
+        assertEq(
+            LibPyth.PRICE_FEED_ID_EQUITY_US_QQQM_USD,
+            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.QQQM/USD"))
+        );
+        assertEq(
+            LibPyth.PRICE_FEED_ID_EQUITY_US_VWO_USD,
+            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.VWO/USD"))
+        );
+        assertEq(
+            LibPyth.PRICE_FEED_ID_EQUITY_US_ARKK_USD,
+            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.ARKK/USD"))
+        );
     }
 
     function testPriceFeedIdUnknownMappings(IntOrAString symbol) external {
@@ -206,44 +222,56 @@ contract LibPythGetPriceFeedIdTest is Test {
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.XAUT/USD"))
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.XRP/USD"))
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.COIN/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.COIN/USD.PRE"))
+                && IntOrAString.unwrap(symbol)
+                    != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.COIN/USD.PRE"))
                 && IntOrAString.unwrap(symbol)
                     != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.COIN/USD.POST"))
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.GOOG/USD"))
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.AMZN/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.AMZN/USD.PRE"))
+                && IntOrAString.unwrap(symbol)
+                    != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.AMZN/USD.PRE"))
                 && IntOrAString.unwrap(symbol)
                     != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.AMZN/USD.POST"))
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.AAPL/USD"))
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.MSFT/USD"))
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.TSLA/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.TSLA/USD.PRE"))
+                && IntOrAString.unwrap(symbol)
+                    != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.TSLA/USD.PRE"))
                 && IntOrAString.unwrap(symbol)
                     != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.TSLA/USD.POST"))
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.NVDA/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.NVDA/USD.PRE"))
+                && IntOrAString.unwrap(symbol)
+                    != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.NVDA/USD.PRE"))
                 && IntOrAString.unwrap(symbol)
                     != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.NVDA/USD.POST"))
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.META/USD"))
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.GME/USD"))
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.MSTR/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.MSTR/USD.PRE"))
+                && IntOrAString.unwrap(symbol)
+                    != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.MSTR/USD.PRE"))
                 && IntOrAString.unwrap(symbol)
                     != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.MSTR/USD.POST"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.BRK-B/USD"))
+                && IntOrAString.unwrap(symbol)
+                    != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.BRK-B/USD"))
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.SPLG/USD"))
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.IAU/USD"))
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.SIVR/USD"))
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.CRCL/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.CRCL/USD.PRE"))
+                && IntOrAString.unwrap(symbol)
+                    != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.CRCL/USD.PRE"))
                 && IntOrAString.unwrap(symbol)
                     != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.CRCL/USD.POST"))
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.PPLT/USD"))
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.BMNR/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.BMNR/USD.PRE"))
+                && IntOrAString.unwrap(symbol)
+                    != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.BMNR/USD.PRE"))
                 && IntOrAString.unwrap(symbol)
                     != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.BMNR/USD.POST"))
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.RKLB/USD"))
+                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.SGOV/USD"))
+                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.QQQM/USD"))
+                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.VWO/USD"))
+                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.ARKK/USD"))
         );
         vm.expectRevert(UnsupportedFeedSymbol.selector);
         this.getPriceFeedIdExternal(symbol);
