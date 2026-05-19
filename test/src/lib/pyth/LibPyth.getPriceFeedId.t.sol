@@ -290,8 +290,10 @@ contract LibPythGetPriceFeedIdTest is Test {
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.ARKK/USD"))
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.CEG/USD"))
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.TSM/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.TSM/USD.PRE"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.TSM/USD.POST"))
+                && IntOrAString.unwrap(symbol)
+                    != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.TSM/USD.PRE"))
+                && IntOrAString.unwrap(symbol)
+                    != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.TSM/USD.POST"))
         );
         vm.expectRevert(UnsupportedFeedSymbol.selector);
         this.getPriceFeedIdExternal(symbol);

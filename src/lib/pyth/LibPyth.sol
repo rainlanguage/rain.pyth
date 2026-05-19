@@ -330,8 +330,6 @@ library LibPyth {
     uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_TSM_USD_POST =
         uint256(0x964571756974792e55532e54534d2f5553442e504f5354000000000000000000);
 
-    
-
     /// TODO replace with O(1) lookup table.
     function getPriceFeedContract(uint256 chainId) internal pure returns (IPyth) {
         if (chainId == CHAIN_ID_ARBITRUM) {
