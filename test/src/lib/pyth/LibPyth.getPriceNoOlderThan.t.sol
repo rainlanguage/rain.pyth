@@ -16,7 +16,9 @@ import {
     FORK_BLOCK_BASE_SGOV,
     FORK_BLOCK_BASE_QQQM,
     FORK_BLOCK_BASE_VWO,
-    FORK_BLOCK_BASE_ARKK
+    FORK_BLOCK_BASE_ARKK,
+    FORK_BLOCK_BASE_CEG,
+    FORK_BLOCK_BASE_TSM
 } from "test/lib/LibFork.sol";
 import {IntOrAString, LibIntOrAString} from "rain.intorastring/lib/LibIntOrAString.sol";
 import {Float, LibDecimalFloat} from "rain.math.float/lib/LibDecimalFloat.sol";
@@ -435,6 +437,38 @@ contract LibPythGetPriceNoOlderThanTest is Test {
             LibDecimalFloat.packLossless(24 hours, 0),
             LibDecimalFloat.packLossless(76.69477e5, -5),
             LibDecimalFloat.packLossless(0.04361e5, -5)
+        );
+    }
+
+    function testPriceNoOlderThanBaseCeg() external {
+        vm.createSelectFork(FORK_RPC_URL_BASE, FORK_BLOCK_BASE_CEG);
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Equity.US.CEG/USD"),
+            LibDecimalFloat.packLossless(24 hours, 0),
+            LibDecimalFloat.packLossless(262.06400e5, -5),
+            LibDecimalFloat.packLossless(0.42330e5, -5)
+        );
+    }
+
+    function testPriceNoOlderThanBaseTsm() external {
+        vm.createSelectFork(FORK_RPC_URL_BASE, FORK_BLOCK_BASE_TSM);
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Equity.US.TSM/USD"),
+            LibDecimalFloat.packLossless(24 hours, 0),
+            LibDecimalFloat.packLossless(396.08005e5, -5),
+            LibDecimalFloat.packLossless(0.23804e5, -5)
+        );
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Equity.US.TSM/USD.PRE"),
+            LibDecimalFloat.packLossless(36 hours, 0),
+            LibDecimalFloat.packLossless(409.37000e5, -5),
+            LibDecimalFloat.packLossless(2.37000e5, -5)
+        );
+        checkPriceNoOlderThan(
+            LibIntOrAString.fromString2("Equity.US.TSM/USD.POST"),
+            LibDecimalFloat.packLossless(24 hours, 0),
+            LibDecimalFloat.packLossless(396.45964e5, -5),
+            LibDecimalFloat.packLossless(0.45688e5, -5)
         );
     }
 }
