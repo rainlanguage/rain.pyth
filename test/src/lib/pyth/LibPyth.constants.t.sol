@@ -217,5 +217,21 @@ contract LibPythConstantsTest is Test {
             LibPyth.PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_ARKK_USD,
             IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.ARKK/USD"))
         );
+        assertEq(
+            LibPyth.PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_CEG_USD,
+            IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.CEG/USD"))
+        );
+        assertEq(
+            LibPyth.PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_TSM_USD,
+            IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.TSM/USD"))
+        );
+        assertEq(
+            LibPyth.PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_TSM_USD_PRE,
+            IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.TSM/USD.PRE"))
+        );
+        assertEq(
+            LibPyth.PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_TSM_USD_POST,
+            IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.TSM/USD.POST"))
+        );
     }
 }

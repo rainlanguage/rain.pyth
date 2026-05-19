@@ -202,6 +202,22 @@ contract LibPythGetPriceFeedIdTest is Test {
             LibPyth.PRICE_FEED_ID_EQUITY_US_ARKK_USD,
             LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.ARKK/USD"))
         );
+        assertEq(
+            LibPyth.PRICE_FEED_ID_EQUITY_US_CEG_USD,
+            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.CEG/USD"))
+        );
+        assertEq(
+            LibPyth.PRICE_FEED_ID_EQUITY_US_TSM_USD,
+            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.TSM/USD"))
+        );
+        assertEq(
+            LibPyth.PRICE_FEED_ID_EQUITY_US_TSM_USD_PRE,
+            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.TSM/USD.PRE"))
+        );
+        assertEq(
+            LibPyth.PRICE_FEED_ID_EQUITY_US_TSM_USD_POST,
+            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.TSM/USD.POST"))
+        );
     }
 
     function testPriceFeedIdUnknownMappings(IntOrAString symbol) external {
@@ -272,6 +288,12 @@ contract LibPythGetPriceFeedIdTest is Test {
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.QQQM/USD"))
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.VWO/USD"))
                 && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.ARKK/USD"))
+                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.CEG/USD"))
+                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.TSM/USD"))
+                && IntOrAString.unwrap(symbol)
+                    != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.TSM/USD.PRE"))
+                && IntOrAString.unwrap(symbol)
+                    != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.TSM/USD.POST"))
         );
         vm.expectRevert(UnsupportedFeedSymbol.selector);
         this.getPriceFeedIdExternal(symbol);

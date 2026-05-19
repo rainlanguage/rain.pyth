@@ -305,6 +305,30 @@ library LibPyth {
     // slither-disable-next-line too-many-digits
     uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_ARKK_USD =
         uint256(0x924571756974792e55532e41524b4b2f55534400000000000000000000000000);
+    /// CEG/USD
+    bytes32 constant PRICE_FEED_ID_EQUITY_US_CEG_USD =
+        0xa541bc5c4b69961442e45e9198c7cce151ff9c2a1003f620c6d4a9785c77a4d9;
+    // slither-disable-next-line too-many-digits
+    uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_CEG_USD =
+        uint256(0x914571756974792e55532e4345472f5553440000000000000000000000000000);
+    /// TSM/USD
+    bytes32 constant PRICE_FEED_ID_EQUITY_US_TSM_USD =
+        0xe722560a66e4ab00522ef20a38fa2ba5d1b41f1c5404723ed895d202a7af7cc4;
+    // slither-disable-next-line too-many-digits
+    uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_TSM_USD =
+        uint256(0x914571756974792e55532e54534d2f5553440000000000000000000000000000);
+    /// TSM/USD.PRE
+    bytes32 constant PRICE_FEED_ID_EQUITY_US_TSM_USD_PRE =
+        0x6ad383437975189ea6ff0efad3de790d34ff36091a5a24c965e5f047a5de45de;
+    // slither-disable-next-line too-many-digits
+    uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_TSM_USD_PRE =
+        uint256(0x954571756974792e55532e54534d2f5553442e50524500000000000000000000);
+    /// TSM/USD.POST
+    bytes32 constant PRICE_FEED_ID_EQUITY_US_TSM_USD_POST =
+        0x763b87165de66edfce13a7c98c13eb781a44b01ff474b61a6155833b12a65ec3;
+    // slither-disable-next-line too-many-digits
+    uint256 constant PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_TSM_USD_POST =
+        uint256(0x964571756974792e55532e54534d2f5553442e504f5354000000000000000000);
 
     /// TODO replace with O(1) lookup table.
     function getPriceFeedContract(uint256 chainId) internal pure returns (IPyth) {
@@ -422,6 +446,14 @@ library LibPyth {
             return PRICE_FEED_ID_EQUITY_US_VWO_USD;
         } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_ARKK_USD) {
             return PRICE_FEED_ID_EQUITY_US_ARKK_USD;
+        } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_CEG_USD) {
+            return PRICE_FEED_ID_EQUITY_US_CEG_USD;
+        } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_TSM_USD) {
+            return PRICE_FEED_ID_EQUITY_US_TSM_USD;
+        } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_TSM_USD_PRE) {
+            return PRICE_FEED_ID_EQUITY_US_TSM_USD_PRE;
+        } else if (feedSymbol == PRICE_FEED_SYMBOL_INTORASTRING_EQUITY_US_TSM_USD_POST) {
+            return PRICE_FEED_ID_EQUITY_US_TSM_USD_POST;
         } else {
             revert UnsupportedFeedSymbol();
         }
