@@ -2,12 +2,12 @@
 // SPDX-FileCopyrightText: Copyright (c) 2020 Rain Open Source Software Ltd
 pragma solidity =0.8.25;
 
-import {OpTest, StackItem} from "rain.interpreter/../test/abstract/OpTest.sol";
+import {OpTest, StackItem} from "rainlang-0.1.2/test/abstract/OpTest.sol";
 import {PythWords} from "src/concrete/PythWords.sol";
 import {FORK_RPC_URL_ARBITRUM, FORK_BLOCK_ARBITRUM} from "test/lib/LibFork.sol";
-import {Strings} from "openzeppelin-contracts/contracts/utils/Strings.sol";
+import {Strings} from "@openzeppelin-contracts-5.6.1/utils/Strings.sol";
 import {LibPyth} from "src/lib/pyth/LibPyth.sol";
-import {LibDecimalFloat, Float} from "rain.math.float/lib/LibDecimalFloat.sol";
+import {LibDecimalFloat, Float} from "rain-math-float-0.1.1/src/lib/LibDecimalFloat.sol";
 
 contract PythWordsPythPriceTest is OpTest {
     using Strings for address;

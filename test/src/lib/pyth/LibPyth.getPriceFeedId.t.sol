@@ -2,9 +2,9 @@
 // SPDX-FileCopyrightText: Copyright (c) 2020 Rain Open Source Software Ltd
 pragma solidity =0.8.25;
 
-import {Test} from "forge-std/Test.sol";
+import {Test} from "forge-std-1.16.1/src/Test.sol";
 import {LibPyth, UnsupportedFeedSymbol} from "src/lib/pyth/LibPyth.sol";
-import {IntOrAString, LibIntOrAString} from "rain.intorastring/lib/LibIntOrAString.sol";
+import {IntOrAString, LibIntOrAString} from "rain-intorastring-0.1.0/src/lib/LibIntOrAString.sol";
 
 contract LibPythGetPriceFeedIdTest is Test {
     function getPriceFeedIdExternal(IntOrAString symbol) external pure returns (bytes32) {
@@ -14,236 +14,259 @@ contract LibPythGetPriceFeedIdTest is Test {
     function testPriceFeedIdKnownMappings() external pure {
         // Test known price feed IDs.
         assertEq(
-            LibPyth.PRICE_FEED_ID_CRYPTO_ARB_USD, LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Crypto.ARB/USD"))
+            LibPyth.PRICE_FEED_ID_CRYPTO_ARB_USD, LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Crypto.ARB/USD"))
         );
         assertEq(
-            LibPyth.PRICE_FEED_ID_CRYPTO_BTC_USD, LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Crypto.BTC/USD"))
+            LibPyth.PRICE_FEED_ID_CRYPTO_BTC_USD, LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Crypto.BTC/USD"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_CRYPTO_WBTC_USD,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Crypto.WBTC/USD"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Crypto.WBTC/USD"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_CRYPTO_CBBTC_USD,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Crypto.CBBTC/USD"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Crypto.CBBTC/USD"))
         );
         assertEq(
-            LibPyth.PRICE_FEED_ID_CRYPTO_DOT_USD, LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Crypto.DOT/USD"))
+            LibPyth.PRICE_FEED_ID_CRYPTO_DOT_USD, LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Crypto.DOT/USD"))
         );
         assertEq(
-            LibPyth.PRICE_FEED_ID_CRYPTO_ENA_USD, LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Crypto.ENA/USD"))
+            LibPyth.PRICE_FEED_ID_CRYPTO_ENA_USD, LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Crypto.ENA/USD"))
         );
         assertEq(
-            LibPyth.PRICE_FEED_ID_CRYPTO_ETH_USD, LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Crypto.ETH/USD"))
+            LibPyth.PRICE_FEED_ID_CRYPTO_ETH_USD, LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Crypto.ETH/USD"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_CRYPTO_WETH_USD,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Crypto.WETH/USD"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Crypto.WETH/USD"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_CRYPTO_WSTETH_USD,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Crypto.WSTETH/USD"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Crypto.WSTETH/USD"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_CRYPTO_LINK_USD,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Crypto.LINK/USD"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Crypto.LINK/USD"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_CRYPTO_PEPE_USD,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Crypto.PEPE/USD"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Crypto.PEPE/USD"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_CRYPTO_PYTH_USD,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Crypto.PYTH/USD"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Crypto.PYTH/USD"))
         );
         assertEq(
-            LibPyth.PRICE_FEED_ID_CRYPTO_UNI_USD, LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Crypto.UNI/USD"))
+            LibPyth.PRICE_FEED_ID_CRYPTO_UNI_USD, LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Crypto.UNI/USD"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_CRYPTO_XAUT_USD,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Crypto.XAUT/USD"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Crypto.XAUT/USD"))
         );
         assertEq(
-            LibPyth.PRICE_FEED_ID_CRYPTO_XRP_USD, LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Crypto.XRP/USD"))
+            LibPyth.PRICE_FEED_ID_CRYPTO_XRP_USD, LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Crypto.XRP/USD"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_EQUITY_US_COIN_USD,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.COIN/USD"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Equity.US.COIN/USD"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_EQUITY_US_COIN_USD_PRE,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.COIN/USD.PRE"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Equity.US.COIN/USD.PRE"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_EQUITY_US_COIN_USD_POST,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.COIN/USD.POST"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Equity.US.COIN/USD.POST"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_EQUITY_US_GOOG_USD,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.GOOG/USD"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Equity.US.GOOG/USD"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_EQUITY_US_AMZN_USD,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.AMZN/USD"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Equity.US.AMZN/USD"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_EQUITY_US_AMZN_USD_PRE,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.AMZN/USD.PRE"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Equity.US.AMZN/USD.PRE"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_EQUITY_US_AMZN_USD_POST,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.AMZN/USD.POST"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Equity.US.AMZN/USD.POST"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_EQUITY_US_AAPL_USD,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.AAPL/USD"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Equity.US.AAPL/USD"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_EQUITY_US_MSFT_USD,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.MSFT/USD"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Equity.US.MSFT/USD"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_EQUITY_US_TSLA_USD,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.TSLA/USD"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Equity.US.TSLA/USD"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_EQUITY_US_TSLA_USD_PRE,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.TSLA/USD.PRE"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Equity.US.TSLA/USD.PRE"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_EQUITY_US_TSLA_USD_POST,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.TSLA/USD.POST"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Equity.US.TSLA/USD.POST"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_EQUITY_US_NVDA_USD,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.NVDA/USD"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Equity.US.NVDA/USD"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_EQUITY_US_NVDA_USD_PRE,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.NVDA/USD.PRE"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Equity.US.NVDA/USD.PRE"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_EQUITY_US_NVDA_USD_POST,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.NVDA/USD.POST"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Equity.US.NVDA/USD.POST"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_EQUITY_US_META_USD,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.META/USD"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Equity.US.META/USD"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_EQUITY_US_GME_USD,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.GME/USD"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Equity.US.GME/USD"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_EQUITY_US_MSTR_USD,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.MSTR/USD"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Equity.US.MSTR/USD"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_EQUITY_US_MSTR_USD_PRE,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.MSTR/USD.PRE"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Equity.US.MSTR/USD.PRE"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_EQUITY_US_MSTR_USD_POST,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.MSTR/USD.POST"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Equity.US.MSTR/USD.POST"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_EQUITY_US_BMNR_USD,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.BMNR/USD"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Equity.US.BMNR/USD"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_EQUITY_US_BMNR_USD_PRE,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.BMNR/USD.PRE"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Equity.US.BMNR/USD.PRE"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_EQUITY_US_BMNR_USD_POST,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.BMNR/USD.POST"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Equity.US.BMNR/USD.POST"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_EQUITY_US_BRK_B_USD,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.BRK-B/USD"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Equity.US.BRK-B/USD"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_EQUITY_US_SPLG_USD,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.SPLG/USD"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Equity.US.SPLG/USD"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_EQUITY_US_IAU_USD,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.IAU/USD"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Equity.US.IAU/USD"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_EQUITY_US_SIVR_USD,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.SIVR/USD"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Equity.US.SIVR/USD"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_EQUITY_US_CRCL_USD,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.CRCL/USD"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Equity.US.CRCL/USD"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_EQUITY_US_PPLT_USD,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.PPLT/USD"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Equity.US.PPLT/USD"))
         );
         assertEq(
             LibPyth.PRICE_FEED_ID_EQUITY_US_RKLB_USD,
-            LibPyth.getPriceFeedId(LibIntOrAString.fromString2("Equity.US.RKLB/USD"))
+            LibPyth.getPriceFeedId(LibIntOrAString.fromStringV3("Equity.US.RKLB/USD"))
         );
     }
 
     function testPriceFeedIdUnknownMappings(IntOrAString symbol) external {
         vm.assume(
-            IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.ARB/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.BTC/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.WBTC/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.CBBTC/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.DOT/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.ENA/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.ETH/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.WETH/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.WSTETH/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.LINK/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.PEPE/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.PYTH/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.UNI/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.XAUT/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Crypto.XRP/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.COIN/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.COIN/USD.PRE"))
+            IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Crypto.ARB/USD"))
+                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Crypto.BTC/USD"))
+                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Crypto.WBTC/USD"))
+                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Crypto.CBBTC/USD"))
+                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Crypto.DOT/USD"))
+                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Crypto.ENA/USD"))
+                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Crypto.ETH/USD"))
+                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Crypto.WETH/USD"))
+                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Crypto.WSTETH/USD"))
+                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Crypto.LINK/USD"))
+                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Crypto.PEPE/USD"))
+                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Crypto.PYTH/USD"))
+                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Crypto.UNI/USD"))
+                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Crypto.XAUT/USD"))
+                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Crypto.XRP/USD"))
                 && IntOrAString.unwrap(symbol)
-                    != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.COIN/USD.POST"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.GOOG/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.AMZN/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.AMZN/USD.PRE"))
+                    != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Equity.US.COIN/USD"))
                 && IntOrAString.unwrap(symbol)
-                    != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.AMZN/USD.POST"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.AAPL/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.MSFT/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.TSLA/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.TSLA/USD.PRE"))
+                    != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Equity.US.COIN/USD.PRE"))
                 && IntOrAString.unwrap(symbol)
-                    != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.TSLA/USD.POST"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.NVDA/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.NVDA/USD.PRE"))
+                    != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Equity.US.COIN/USD.POST"))
                 && IntOrAString.unwrap(symbol)
-                    != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.NVDA/USD.POST"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.META/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.GME/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.MSTR/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.MSTR/USD.PRE"))
+                    != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Equity.US.GOOG/USD"))
                 && IntOrAString.unwrap(symbol)
-                    != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.MSTR/USD.POST"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.BRK-B/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.SPLG/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.IAU/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.SIVR/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.CRCL/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.CRCL/USD.PRE"))
+                    != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Equity.US.AMZN/USD"))
                 && IntOrAString.unwrap(symbol)
-                    != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.CRCL/USD.POST"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.PPLT/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.BMNR/USD"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.BMNR/USD.PRE"))
+                    != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Equity.US.AMZN/USD.PRE"))
                 && IntOrAString.unwrap(symbol)
-                    != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.BMNR/USD.POST"))
-                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromString2("Equity.US.RKLB/USD"))
+                    != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Equity.US.AMZN/USD.POST"))
+                && IntOrAString.unwrap(symbol)
+                    != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Equity.US.AAPL/USD"))
+                && IntOrAString.unwrap(symbol)
+                    != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Equity.US.MSFT/USD"))
+                && IntOrAString.unwrap(symbol)
+                    != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Equity.US.TSLA/USD"))
+                && IntOrAString.unwrap(symbol)
+                    != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Equity.US.TSLA/USD.PRE"))
+                && IntOrAString.unwrap(symbol)
+                    != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Equity.US.TSLA/USD.POST"))
+                && IntOrAString.unwrap(symbol)
+                    != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Equity.US.NVDA/USD"))
+                && IntOrAString.unwrap(symbol)
+                    != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Equity.US.NVDA/USD.PRE"))
+                && IntOrAString.unwrap(symbol)
+                    != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Equity.US.NVDA/USD.POST"))
+                && IntOrAString.unwrap(symbol)
+                    != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Equity.US.META/USD"))
+                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Equity.US.GME/USD"))
+                && IntOrAString.unwrap(symbol)
+                    != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Equity.US.MSTR/USD"))
+                && IntOrAString.unwrap(symbol)
+                    != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Equity.US.MSTR/USD.PRE"))
+                && IntOrAString.unwrap(symbol)
+                    != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Equity.US.MSTR/USD.POST"))
+                && IntOrAString.unwrap(symbol)
+                    != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Equity.US.BRK-B/USD"))
+                && IntOrAString.unwrap(symbol)
+                    != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Equity.US.SPLG/USD"))
+                && IntOrAString.unwrap(symbol) != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Equity.US.IAU/USD"))
+                && IntOrAString.unwrap(symbol)
+                    != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Equity.US.SIVR/USD"))
+                && IntOrAString.unwrap(symbol)
+                    != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Equity.US.CRCL/USD"))
+                && IntOrAString.unwrap(symbol)
+                    != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Equity.US.CRCL/USD.PRE"))
+                && IntOrAString.unwrap(symbol)
+                    != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Equity.US.CRCL/USD.POST"))
+                && IntOrAString.unwrap(symbol)
+                    != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Equity.US.PPLT/USD"))
+                && IntOrAString.unwrap(symbol)
+                    != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Equity.US.BMNR/USD"))
+                && IntOrAString.unwrap(symbol)
+                    != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Equity.US.BMNR/USD.PRE"))
+                && IntOrAString.unwrap(symbol)
+                    != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Equity.US.BMNR/USD.POST"))
+                && IntOrAString.unwrap(symbol)
+                    != IntOrAString.unwrap(LibIntOrAString.fromStringV3("Equity.US.RKLB/USD"))
         );
         vm.expectRevert(UnsupportedFeedSymbol.selector);
         this.getPriceFeedIdExternal(symbol);
