@@ -1,0 +1,34 @@
+# SPDX-License-Identifier: LicenseRef-DCL-1.0
+# SPDX-FileCopyrightText: Copyright (c) 2020 Rain Open Source Software Ltd
+
+# Publish only the Solidity source (src/) to Soldeer. Without this, the push
+# zips the whole repo tree — including dotfiles soldeer flags as "sensitive" —
+# which hangs the non-interactive CI publish on a confirmation prompt
+# ("error during IO operation: not connected"). Same syntax as .gitignore.
+
+# Tooling / repo dotfiles
+.DS_Store
+.envrc
+.gas-snapshot
+.git
+.github
+.gitignore
+.pre-commit-config.yaml
+.soldeerignore
+slither.config.json
+
+# Non-source trees / build output (consumers import rain-pyth-x.y.z/src/ only)
+/cache
+/dependencies
+/flake.lock
+/flake.nix
+/foundry.lock
+/foundry.toml
+/meta
+/node_modules
+/out
+/remappings.txt
+/REUSE.toml
+/script
+/soldeer.lock
+/test
