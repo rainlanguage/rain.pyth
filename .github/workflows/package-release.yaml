@@ -5,7 +5,23 @@ on:
       - main
 jobs:
   release:
+    # rainix-autopublish pushes the post-publish version-bump commit + tag and
+    # requests id-token, so the caller must grant these scopes; the repo default
+    # workflow token is read-only. Grant exactly what the reusable needs here
+    # rather than widening the repo-wide default.
+    permissions:
+      contents: write
+      id-token: write
     uses: rainlanguage/rainix/.github/workflows/rainix-autopublish.yaml@main
     with:
       soldeer-package: rain-pyth
+      # `foundry.toml` [package].version is the next, in-development release. On a
+      # merge that changes Solidity content the reusable publishes that version,
+      # bumps to the next, and regenerates the committed pointer snapshot so the
+      # bump commit is born clean. The command runs in the reusable's pinned
+      # rainix sol-shell on a fresh checkout with no deps installed, so
+      # `forge soldeer install` runs first (BuildPointers compiles the contracts),
+      # and `forge fmt` normalizes BuildPointers' unindented output to match the
+      # copy-artifacts / git-clean checks.
+      soldeer-generate-cmd: forge soldeer install && forge script ./script/BuildPointers.sol && forge fmt
     secrets: inherit
