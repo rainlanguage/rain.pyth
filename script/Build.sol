@@ -10,7 +10,7 @@ import {LibGenParseMeta} from "rain-interpreter-interface-0.1.0/src/lib/codegen/
 import {LibPythSubParser} from "src/lib/parse/LibPythSubParser.sol";
 import {PARSE_META_BUILD_DEPTH} from "src/abstract/PythSubParser.sol";
 
-contract BuildPointers is Script {
+contract Build is Script {
     function buildPythWordsPointers() internal {
         PythWords pythWords = new PythWords();
 
