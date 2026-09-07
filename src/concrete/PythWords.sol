@@ -5,7 +5,7 @@ pragma solidity =0.8.25;
 import {PythExtern, BaseRainlangExtern} from "../abstract/PythExtern.sol";
 import {PythSubParser, BaseRainlangSubParser} from "../abstract/PythSubParser.sol";
 import {IDescribedByMetaV1} from "rain-metadata-0.1.0/src/interface/IDescribedByMetaV1.sol";
-import {DESCRIBED_BY_META_HASH} from "../generated/PythWords.pointers.sol";
+import {DESCRIBED_BY_META_HASH} from "../generated/PythWordsPointers.sol";
 
 contract PythWords is PythExtern, PythSubParser {
     /// @inheritdoc IDescribedByMetaV1

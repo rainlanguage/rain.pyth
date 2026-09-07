@@ -2,7 +2,7 @@
 // SPDX-FileCopyrightText: Copyright (c) 2020 Rain Open Source Software Ltd
 pragma solidity ^0.8.25;
 
-import {Test, console2} from "forge-std-1.16.1/src/Test.sol";
+import {Test, console2} from "forge-std-1.16.2/src/Test.sol";
 import {LibPyth} from "src/lib/pyth/LibPyth.sol";
 import {
     FORK_RPC_URL_ARBITRUM,
