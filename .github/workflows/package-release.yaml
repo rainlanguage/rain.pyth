@@ -5,7 +5,23 @@ on:
       - main
 jobs:
   release:
+    # rainix-autopublish pushes the post-publish version-bump commit + tag and
+    # requests id-token, so the caller must grant these scopes; the repo default
+    # workflow token is read-only. Grant exactly what the reusable needs here
+    # rather than widening the repo-wide default.
+    permissions:
+      contents: write
+      id-token: write
     uses: rainlanguage/rainix/.github/workflows/rainix-autopublish.yaml@main
     with:
       soldeer-package: rain-pyth
+      # `foundry.toml` [package].version is the next, in-development release. On
+      # a merge whose soldeer package content changed vs the published revision,
+      # the reusable publishes that version and bumps `[package].version` to the
+      # next. The bump does NOT regenerate artifacts: every committed artifact
+      # (pointers via BuildPointers, authoring meta via `script/build.sh` in the
+      # default devshell where `rain` lives) is built and committed by the PR
+      # that defines that version's content, and copy-artifacts diff-checks it
+      # on main, so the bump commit is born clean without a release-time
+      # regeneration path that could diverge from `script/build.sh`.
     secrets: inherit
