@@ -6,7 +6,7 @@ import {Test} from "forge-std-1.16.2/src/Test.sol";
 import {LibOpPythPrice, OperandV2, StackItem} from "src/lib/op/LibOpPythPrice.sol";
 import {LibIntOrAString, IntOrAString} from "rain-intorastring-0.1.0/src/lib/LibIntOrAString.sol";
 import {FORK_RPC_URL_ARBITRUM, FORK_BLOCK_ARBITRUM} from "test/lib/LibFork.sol";
-import {Float, LibDecimalFloat} from "rain-math-float-0.1.1/src/lib/LibDecimalFloat.sol";
+import {Float, LibDecimalFloat} from "rain-math-float-0.2.1/src/lib/LibDecimalFloat.sol";
 
 contract LibOpPythPriceTest is Test {
     function testIntegrity(OperandV2 operand, uint256 inputs, uint256 outputs) external pure {
