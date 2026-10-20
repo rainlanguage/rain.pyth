@@ -4,8 +4,8 @@ pragma solidity ^0.8.25;
 
 import {IPyth} from "@pythnetwork-pyth-sdk-solidity-4.3.1/IPyth.sol";
 import {PythStructs} from "@pythnetwork-pyth-sdk-solidity-4.3.1/PythStructs.sol";
-import {LibDecimalFloat, Float} from "rain-math-float-0.2.1/src/lib/LibDecimalFloat.sol";
-import {IntOrAString} from "rain-intorastring-0.1.0/src/lib/LibIntOrAString.sol";
+import {LibDecimalFloat, Float} from "rain-math-float-0.3.10/src/lib/LibDecimalFloat.sol";
+import {IntOrAString} from "rain-intorastring-0.1.4/src/lib/LibIntOrAString.sol";
 
 error UnsupportedChainId();
 

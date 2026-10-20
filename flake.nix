@@ -7,12 +7,19 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, flake-utils, rainix, rain }:
-    flake-utils.lib.eachDefaultSystem (system:
+  outputs =
+    {
+      flake-utils,
+      rainix,
+      rain,
+      ...
+    }:
+    flake-utils.lib.eachDefaultSystem (
+      system:
       let
         pkgs = rainix.pkgs.${system};
-      in rec
-      {
+      in
+      rec {
         packages = {
           rain-pyth-prelude = rainix.mkTask.${system} {
             name = "rain-pyth-prelude";
@@ -31,7 +38,8 @@
                 ;
             '';
           };
-        } // rainix.packages.${system};
+        }
+        // rainix.packages.${system};
 
         devShells.default = pkgs.mkShell {
           packages = [
@@ -39,9 +47,7 @@
             rain.defaultPackage.${system}
           ];
 
-          shellHook = rainix.devShells.${system}.default.shellHook;
-          buildInputs = rainix.devShells.${system}.default.buildInputs;
-          nativeBuildInputs = rainix.devShells.${system}.default.nativeBuildInputs;
+          inherit (rainix.devShells.${system}.default) shellHook buildInputs nativeBuildInputs;
 
         };
       }

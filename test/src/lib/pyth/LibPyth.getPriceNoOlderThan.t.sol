@@ -2,7 +2,7 @@
 // SPDX-FileCopyrightText: Copyright (c) 2020 Rain Open Source Software Ltd
 pragma solidity ^0.8.25;
 
-import {Test, console2} from "forge-std-1.16.2/src/Test.sol";
+import {Test, console2} from "forge-std-1.17.0/src/Test.sol";
 import {LibPyth} from "src/lib/pyth/LibPyth.sol";
 import {
     FORK_RPC_URL_ARBITRUM,
@@ -14,8 +14,8 @@ import {
     FORK_BLOCK_BASE_BMNR,
     FORK_BLOCK_BASE_RKLB
 } from "test/lib/LibFork.sol";
-import {IntOrAString, LibIntOrAString} from "rain-intorastring-0.1.0/src/lib/LibIntOrAString.sol";
-import {Float, LibDecimalFloat} from "rain-math-float-0.2.1/src/lib/LibDecimalFloat.sol";
+import {IntOrAString, LibIntOrAString} from "rain-intorastring-0.1.4/src/lib/LibIntOrAString.sol";
+import {Float, LibDecimalFloat} from "rain-math-float-0.3.10/src/lib/LibDecimalFloat.sol";
 
 contract LibPythGetPriceNoOlderThanTest is Test {
     using LibIntOrAString for string;
