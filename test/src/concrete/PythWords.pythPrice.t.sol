@@ -2,7 +2,7 @@
 // SPDX-FileCopyrightText: Copyright (c) 2020 Rain Open Source Software Ltd
 pragma solidity =0.8.25;
 
-import {OpTest, StackItem} from "rainlang-0.2.16/test/abstract/OpTest.sol";
+import {OpTest, StackItem} from "rainlang-0.2.19/test/abstract/OpTest.sol";
 import {PythWords} from "src/concrete/PythWords.sol";
 import {FORK_RPC_URL_ARBITRUM, FORK_BLOCK_ARBITRUM} from "test/lib/LibFork.sol";
 import {Strings} from "@openzeppelin-contracts-5.7.0/utils/Strings.sol";
