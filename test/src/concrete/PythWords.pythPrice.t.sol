@@ -7,7 +7,7 @@ import {PythWords} from "src/concrete/PythWords.sol";
 import {FORK_RPC_URL_ARBITRUM, FORK_BLOCK_ARBITRUM} from "test/lib/LibFork.sol";
 import {Strings} from "@openzeppelin-contracts-5.7.0/utils/Strings.sol";
 import {LibPyth} from "src/lib/pyth/LibPyth.sol";
-import {LibDecimalFloat, Float} from "rain-math-float-0.3.12/src/lib/LibDecimalFloat.sol";
+import {LibDecimalFloat, Float} from "rain-math-float-0.3.11/src/lib/LibDecimalFloat.sol";
 
 contract PythWordsPythPriceTest is OpTest {
     using Strings for address;
