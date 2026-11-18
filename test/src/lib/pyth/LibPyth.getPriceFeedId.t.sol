@@ -4,7 +4,7 @@ pragma solidity =0.8.25;
 
 import {Test} from "forge-std-1.17.0/src/Test.sol";
 import {LibPyth, UnsupportedFeedSymbol} from "src/lib/pyth/LibPyth.sol";
-import {IntOrAString, LibIntOrAString} from "rain-intorastring-0.1.4/src/lib/LibIntOrAString.sol";
+import {IntOrAString, LibIntOrAString} from "rain-intorastring-0.1.5/src/lib/LibIntOrAString.sol";
 
 contract LibPythGetPriceFeedIdTest is Test {
     function getPriceFeedIdExternal(IntOrAString symbol) external pure returns (bytes32) {
