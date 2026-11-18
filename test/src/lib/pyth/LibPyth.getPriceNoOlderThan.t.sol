@@ -14,7 +14,7 @@ import {
     FORK_BLOCK_BASE_BMNR,
     FORK_BLOCK_BASE_RKLB
 } from "test/lib/LibFork.sol";
-import {IntOrAString, LibIntOrAString} from "rain-intorastring-0.1.4/src/lib/LibIntOrAString.sol";
+import {IntOrAString, LibIntOrAString} from "rain-intorastring-0.1.5/src/lib/LibIntOrAString.sol";
 import {Float, LibDecimalFloat} from "rain-math-float-0.3.13/src/lib/LibDecimalFloat.sol";
 
 contract LibPythGetPriceNoOlderThanTest is Test {

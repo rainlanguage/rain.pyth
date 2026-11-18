@@ -3,7 +3,7 @@
 pragma solidity =0.8.25;
 
 import {Test} from "forge-std-1.17.0/src/Test.sol";
-import {LibIntOrAString, IntOrAString} from "rain-intorastring-0.1.4/src/lib/LibIntOrAString.sol";
+import {LibIntOrAString, IntOrAString} from "rain-intorastring-0.1.5/src/lib/LibIntOrAString.sol";
 import {LibPyth} from "src/lib/pyth/LibPyth.sol";
 
 contract LibPythConstantsTest is Test {
