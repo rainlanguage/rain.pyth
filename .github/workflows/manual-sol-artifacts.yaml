@@ -11,7 +11,6 @@ on:
           - flare
           - arbitrum
           - base
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -19,16 +18,14 @@ jobs:
       - run: |
           network=${{ inputs.network }}
           echo "etherscan_api_key_secret_name=CI_DEPLOY_${network^^}_ETHERSCAN_API_KEY" >> $GITHUB_ENV
-          echo "rpc_secret_name=CI_DEPLOY_${network^^}_RPC_URL" >> $GITHUB_ENV
+          echo "rpc_secret_name=RPC_URL_${network^^}_FORK" >> $GITHUB_ENV
           echo "verify_secret_name=CI_DEPLOY_${network^^}_VERIFY" >> $GITHUB_ENV
           echo "verifier_secret_name=CI_DEPLOY_${network^^}_VERIFIER" >> $GITHUB_ENV
           echo "verifier_url_secret_name=CI_DEPLOY_${network^^}_VERIFIER_URL" >> $GITHUB_ENV
           echo "metaboard_address_secret_name=CI_DEPLOY_${network^^}_METABOARD_ADDRESS" >> $GITHUB_ENV
-
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
       - uses: nixbuild/nix-quick-install-action@v30
         with:
           nix_conf: |
@@ -45,16 +42,13 @@ jobs:
           # before trying to save a new cache
           # 1G = 1073741824
           gc-max-store-size-linux: 1G
-
       - run: nix develop -c rainix-sol-prelude
         working-directory: ./lib/rain.interpreter
       - run: nix develop -c rainix-rs-prelude
         working-directory: ./lib/rain.interpreter
       - run: nix develop -c i9r-prelude
         working-directory: ./lib/rain.interpreter
-
       - run: nix develop -c rainix-sol-prelude
-
       - run: nix develop -c rainix-sol-artifacts
         env:
           DEPLOY_BROADCAST: '1'
